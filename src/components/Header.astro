@@ -1,17 +1,14 @@
-<header>
-  <nav>
-    <h2><a href="/">Workbench Note</a></h2>
-    <div class="internal-links">
-      <a href="/profile">プロフィール</a>
-      <a href="/search">検索</a>
-      <a href="/contact">お問い合わせ</a>
-    </div>
-  </nav>
+---
+import { SITE_TITLE } from '../consts';
+---
+
+<header class="site-header">
+<div style="max-width: 1100px; margin: 0 auto;">
+<h1 class="site-title"><a href="/">{SITE_TITLE}</a></h1>
+<nav class="nav-links">
+<a href="/">HOME</a>
+<a href="/blog">ALL POSTS</a>
+<a href="/about">ABOUT</a>
+</nav>
+</div>
 </header>
-<style>
-  header { margin: 0; padding: 0 1em; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-  nav { display: flex; align-items: center; justify-content: space-between; max-width: 960px; margin: 0 auto; padding: 1em 0; }
-  nav h2 a { text-decoration: none; color: #111; font-weight: bold; }
-  .internal-links a { padding: 1em 0.5em; color: #333; text-decoration: none; }
-  .internal-links a:hover { color: #000; font-weight: bold; }
-</style>

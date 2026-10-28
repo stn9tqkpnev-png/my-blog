@@ -1,59 +1,61 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+
+const posts = (await getCollection('blog')).sort(
+(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to
-				build a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your{' '}
-				<code>astro.config.mjs</code> file. You can customize your setup with{' '}
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like
-				Tailwind, React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>
-					Edit this page in <code>src/pages/index.astro</code>
-				</li>
-				<li>
-					Edit the site header items in <code>src/components/Header.astro</code>
-				</li>
-				<li>
-					Add your name to the footer in <code>src/components/Footer.astro</code>
-				</li>
-				<li>
-					Check out the included blog posts in <code>src/content/blog/</code>
-				</li>
-				<li>
-					Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to{' '}
-				<a href="https://docs.astro.build/">read the docs</a> or{' '}
-				<a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out{' '}
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a> by{' '}
-				<a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+<html lang="ja">
+<head>
+<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+<Header />
+<div class="container">
+<main class="main-content">
+<h2 style="margin: 0 0 0.5rem 0; font-size: 1.2rem; border-left: 4px solid var(--accent-color); padding-left: 0.5rem;">最新記事一覧</h2>
+{
+posts.map((post) => (
+<article class="article-card">
+{post.data.heroImage && (
+<Image src={post.data.heroImage} alt="" class="article-thumb" />
+)}
+<div class="article-body">
+<h3 class="article-title">
+<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+</h3>
+<div class="article-meta">
+<FormattedDate date={post.data.pubDate} />
+</div>
+<p class="article-description">{post.data.description}</p>
+</div>
+</article>
+))
+}
+</main>
+<aside class="sidebar">
+<div class="widget">
+<h3 class="widget-title">About</h3>
+<p style="font-size: 0.9rem; margin: 0;">Workbenchへようこそ！ガジェット、技術、日常の記録を発信するマガジン型ブログです。</p>
+</div>
+<div class="widget">
+<h3 class="widget-title">カテゴリー</h3>
+<ul style="padding-left: 1.2rem; margin: 0; font-size: 0.9rem;">
+<li>ガジェット</li>
+<li>WEB・開発</li>
+<li>レビュー</li>
+</ul>
+</div>
+</aside>
+</div>
+<Footer />
+</body>
 </html>
