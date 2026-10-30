@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workbench</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #111111;
+            --muted: #666666;
+            --border: #e5e5e5;
+            --accent: #0f172a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+        header {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 a {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav a {
+            margin-left: 20px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        nav a:hover { color: var(--muted); }
+        
+        .layout {
+            max-width: 900px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 40px;
+        }
+        @media (max-width: 768px) {
+            .layout { grid-template-columns: 1fr; }
+        }
+
+        main h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--muted);
+        }
+        article {
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        article img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: #eee;
+        }
+        article h3 a {
+            font-size: 1.3rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        article h3 a:hover { text-decoration: underline; }
+        .time {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 6px 0 10px 0;
+        }
+        .desc {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        aside {
+            background: #fafafa;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            height: fit-content;
+        }
+        aside h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        aside p, aside ul {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+        aside ul { list-style: none; padding-left: 0; }
+        aside li { margin-bottom: 6px; }
+
+        footer {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        footer div { margin: 12px 0; }
+        footer a { color: var(--muted); text-decoration: none; margin: 0 12px; }
+        footer a:hover { text-decoration: underline; }
+
+        /* 記事詳細用スタイル */
+        .hidden { display: none; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .article-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+        .article-body h2 {
+            font-size: 1.4rem;
+            margin: 36px 0 16px 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+        .article-body p { margin-bottom: 16px; }
+        .article-body ol { margin-bottom: 16px; padding-left: 20px; }
+        .article-body li { margin-bottom: 8px; }
+        pre {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            margin: 20px 0;
+        }
+        code { font-family: monospace; }
+        pre code { background: none; padding: 0; color: inherit; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="#" onclick="showHome()">Workbench</a></h1>
+        <nav>
+            <a href="#" onclick="showHome()">HOME</a>
+            <a href="#" onclick="showHome()">ALL POSTS</a>
+            <a href="#" onclick="alert('ABOUTページ')">ABOUT</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main>
+            <!-- ホーム（記事一覧） -->
+            <div id="view-home">
+                <h2>最新記事一覧</h2>
+                
+                <!-- Amazfit記事 -->
+                <article>
+                    <h3><a href="#" onclick="showPost('amazfit')">Amazfit T-Rex 2 から SESAME 5 をGAS経由で解錠・施錠する</a></h3>
+                    <div class="time">Oct 27, 2026</div>
+                    <p class="desc">スマートウォッチの操作や通知からGoogle Apps Script経由で自宅のセサミを動かす構成とコードを解説します。</p>
+                </article>
+
+                <!-- 既存記事1 -->
+                <article>
+                    <h3><a href="#" onclick="alert('サンプル記事です')">初めてのブログ記事</a></h3>
+                    <div class="time">Oct 27, 2026</div>
+                    <p class="desc">スマホとTermuxだけで作った爆速ブログです。</p>
+                </article>
+
+                <!-- 既存記事2 -->
+                <article>
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='960' height='480' viewBox='0 0 960 480'><rect width='100%' height='100%' fill='%23e2e8f0'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%2364748b' font-family='sans-serif' font-size='24'>Markdown Style Guide</text></svg>" alt="Markdown Style Guide">
+                    <h3><a href="#" onclick="alert('サンプル記事です')">Markdown Style Guide</a></h3>
+                    <div class="time">Jun 19, 2024</div>
+                    <p class="desc">Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
+                </article>
+            </div>
+
+            <!-- 記事詳細ビュー -->
+            <div id="view-amazfit" class="hidden">
+                <a href="#" class="back-link" onclick="showHome()">← 記事一覧に戻る</a>
+                <article style="border: none; padding: 0;">
+                    <div class="time">Oct 27, 2026</div>
+                    <h1 class="article-title">Amazfit T-Rex 2 から SESAME 5 をGAS経由で解錠・施錠する</h1>
+                    
+                    <div class="article-body">
+                        <p>スマートウォッチ（Amazfit T-Rex 2）から、自宅のスマートロック（SESAME 5）を直接操作できたら便利だと思いませんか？</p>
+                        <p>今回は、<b>Google Apps Script (GAS)</b> を中継地点として利用し、ウォッチから手軽に自宅の鍵を解錠・施錠する仕組みを作ったのでその手順をご紹介します。</p>
+
+                        <h2>全体の仕組み</h2>
+                        <ol>
+                            <li><b>Amazfit T-Rex 2</b> から何らかのトリガー（通知やWebhooks等）を発信。</li>
+                            <li><b>Google Apps Script (GAS)</b> の Webアプリのエンドポイントにリクエストを送信。</li>
+                            <li><b>GAS</b> がセサミ（CANDY HOUSE）の公式APIを叩いて、SESAME 5を操作。</li>
+                        </ol>
+
+                        <h2>1. Google Apps Script (GAS) の準備</h2>
+                        <p>まずは中継地点となるGASのコードを作成します。</p>
+<pre><code>function doPost(e) {
+  const secretKey = "YOUR_SECRET_KEY";
+  const data = JSON.parse(e.postData.contents);
+  
+  if (data.key !== secretKey) {
+    return ContentService.createTextOutput(JSON.stringify({status: "Unauthorized"}));
+  }
+
+  const sesameApiKey = "YOUR_SESAME_API_KEY";
+  const deviceUuid = "YOUR_SESAME_UUID";
+  const command = data.command;
+  
+  const url = `https://app.candyhouse.co/api/v1/sesame/${deviceUuid}/cmd`;
+  const options = {
+    method: "post",
+    contentType: "application/json",
+    headers: { "x-api-key": sesameApiKey },
+    payload: JSON.stringify({ command: command, history: "Amazfit from GAS" })
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(url, options);
+    return ContentService.createTextOutput(response.getContentText());
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({status: "Error", message: error.toString()}));
+  }
+}</code></pre>
+
+                        <h2>2. 使い方とまとめ</h2>
+                        <p>デプロイして発行されたWebアプリのURLに対して、JSON形式で <code>command: "unlock"</code> などをPOST送信することで、手元から自由に鍵を動かせるようになります。</p>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <aside>
+            <div>
+                <h3>About</h3>
+                <p>Workbenchへようこそ！ガジェット、技術、日常の記録を発信するマガジン型ブログです。</p>
+            </div>
+            <div>
+                <h3>カテゴリー</h3>
+                <ul>
+                    <li>ガジェット</li>
+                    <li>WEB・開発</li>
+                    <li>レビュー</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Workbench Note</p>
+        <div>
+            <a href="#">プロフィール</a>
+            <a href="#">プライバシーポリシー</a>
+            <a href="#">免責事項</a>
+            <a href="#">サイトマップ</a>
+            <a href="#">お問い合わせ</a>
+        </div>
+        <p>© 2026 Workbench Note</p>
+    </footer>
+
+    <script>
+        function showHome() {
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('view-amazfit').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+        function showPost(id) {
+            document.getElementById('view-home').classList.add('hidden');
+            if(id === 'amazfit') {
+                document.getElementById('view-amazfit').classList.remove('hidden');
+            }
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
