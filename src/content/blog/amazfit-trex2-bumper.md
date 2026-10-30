@@ -5,7 +5,6 @@ pubDate: "Oct 30 2026"
 heroImage: "../../assets/trex2-bumper.jpg"
 ---
 
-# Amazfit T-Rex 2にAliExpressのバンパーカバーを装着レビュー！
 
 ## はじめに：T-Rex 2のフレームに傷が…
 
