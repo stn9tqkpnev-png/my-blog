@@ -1,18 +1,28 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 <html lang="ja">
-  <head><BaseHead title="サイトマップ" description="サイトマップ" /></head>
+  <head>
+    <BaseHead title="サイトマップ" description="Workbench Noteのサイトマップです。サイト内のページ一覧から目的のページを探せます。" />
+  </head>
   <body>
     <Header />
-    <main style="max-width: 720px; margin: 2rem auto; padding: 0 1rem;">
+    <main style="max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.8;">
       <h1>サイトマップ</h1>
+      <h2>記事</h2>
       <ul>
         <li><a href="/">ホーム</a></li>
-        <li><a href="/profile">プロフィール</a></li>
+        <li><a href="/blog">記事一覧</a></li>
+        <li><a href="/search">サイト内検索</a></li>
+      </ul>
+      <h2>サイト情報</h2>
+      <ul>
+        <li><a href="/profile">プロフィール・運営者情報</a></li>
         <li><a href="/contact">お問い合わせ</a></li>
+        <li><a href="/privacy">プライバシーポリシー</a></li>
+        <li><a href="/terms">免責事項</a></li>
       </ul>
     </main>
     <Footer />
