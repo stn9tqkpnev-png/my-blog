@@ -1,7 +1,7 @@
 ---
 title: "Amazfit T-Rex 2にAliExpressのバンパーカバーを装着レビュー！傷隠しにも最適"
 description: "Amazfit T-Rex 2用の激安バンパーカバーをAliExpressで購入。光沢感、フィット感、装着感、傷隠し効果を正直レビュー。付けている違和感ゼロでゴツく見えるおすすめアイテムです。"
-pubDate: "Oct 31 2026"
+pubDate: "Oct 30 2026"
 heroImage: "/images/trex2-bumper.jpg"
 ---
 
