@@ -1,17 +1,38 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 <html lang="ja">
   <head>
-    <BaseHead title="プロフィール" description="Workbench Noteのプロフィールページです。" />
+    <BaseHead title="プロフィール・運営者情報" description="Workbench Noteの運営者情報です。サイトの目的、扱うテーマ、記事の方針について紹介しています。" />
   </head>
   <body>
     <Header />
-    <main style="max-width: 720px; margin: 2rem auto; padding: 0 1rem;">
-      <h1>プロフィール</h1>
-      <p>Workbench Noteへようこそ！スマホと最新のWeb技術を活用して、役立つ情報を発信しています。</p>
+    <main style="max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.8;">
+      <h1>プロフィール・運営者情報</h1>
+      <h2>運営者</h2>
+      <p>Workbench Note 運営者</p>
+      <h2>このブログについて</h2>
+      <p>Workbench Noteは、ガジェットやWEB・開発、日々の記録を発信するブログです。スマートウォッチ、スマートロック、スマホまわりの便利なツールなど、実際に自分で使って試したことを、できるだけ分かりやすくまとめています。</p>
+      <p>このブログは、Androidスマホとターミナルアプリ(Termux)だけで運営しています。パソコンがなくても、情報発信やブログ運営はできる、という実例としても読んでもらえたら嬉しいです。</p>
+      <h2>扱っているテーマ</h2>
+      <ul>
+        <li>ガジェット(スマートウォッチ、スマートロックなど)</li>
+        <li>WEB・開発(Astro、Cloudflare Pages、Termuxなど)</li>
+        <li>レビュー(使ってみた感想と、良かった点・気になった点)</li>
+      </ul>
+      <h2>記事を書くときの方針</h2>
+      <ul>
+        <li>実際に試したこと、確認したことを中心に書きます。</li>
+        <li>良い点だけでなく、気になった点や向かない人も正直に書きます。</li>
+        <li>広告やアフィリエイトリンクを含む記事には、その旨を明記します。</li>
+        <li>情報の誤りに気づいたときは、速やかに修正します。</li>
+      </ul>
+      <h2>広告・アフィリエイトについて</h2>
+      <p>当ブログは、広告やアフィリエイトプログラムによる収入で運営しています。詳しくは<a href="/privacy">プライバシーポリシー</a>と<a href="/terms">免責事項</a>をご覧ください。</p>
+      <h2>お問い合わせ</h2>
+      <p>記事へのご意見、誤りのご指摘、お仕事のご依頼などは、<a href="/contact">お問い合わせフォーム</a>からご連絡ください。</p>
     </main>
     <Footer />
   </body>
