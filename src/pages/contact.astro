@@ -1,17 +1,24 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 <html lang="ja">
   <head>
-    <BaseHead title="お問い合わせ" description="Workbench Noteへのお問い合わせ" />
+    <BaseHead title="お問い合わせ" description="Workbench Noteへのお問い合わせページです。" />
   </head>
   <body>
     <Header />
     <main style="max-width: 720px; margin: 2rem auto; padding: 0 1rem;">
       <h1>お問い合わせ</h1>
-      <p>ご意見・ご質問などは、以下のメールアドレスまたはSNSよりお気軽にお問い合わせください。</p>
+      <p>当ブログへのご意見・ご質問、記事内容のご指摘、広告掲載やお仕事のご依頼などは、下記のお問い合わせフォームよりご連絡ください。</p>
+      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeqiDFLTaM3umlLRSlEBSkdqZlNiUNG3N4Mj4EpyFPHzMIjWQ/viewform" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 0.8rem 1.6rem; background: #2563eb; color: #fff; border-radius: 8px; text-decoration: none; font-weight: bold;">お問い合わせフォームを開く</a></p>
+      <h2>ご連絡にあたって</h2>
+      <ul>
+        <li>返信までに数日かかる場合があります。</li>
+        <li>内容によっては、返信できない場合があります。</li>
+        <li>いただいた個人情報は、お問い合わせへの対応以外には利用しません。詳しくは<a href="/privacy">プライバシーポリシー</a>をご覧ください。</li>
+      </ul>
     </main>
     <Footer />
   </body>
