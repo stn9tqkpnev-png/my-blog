@@ -48,8 +48,16 @@ Amazfit T-Rex 2を使っていると、どうしてもフレーム部分に傷�
 
 Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパーカバーはおすすめです。
 
-<div style="text-align: center; margin: 30px 0;">
-  <a href="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" target="_blank" rel="noopener">
-    <img src="../../assets/amazon-banner.svg" alt="Amazonで詳細を見る" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+<div style="text-align: center; margin: 40px 0;">
+  <a href="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" target="_blank" rel="noopener" style="display: block; max-width: 400px; margin: 0 auto; text-decoration: none; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #fff;">
+    <div style="background-color: #f3f3f3; padding: 15px; border-bottom: 1px solid #ddd;">
+      <span style="font-size: 14px; color: #555;">＼ 今回紹介した商品 ／</span>
+    </div>
+    <div style="padding: 20px;">
+      <p style="color: #333; font-weight: bold; margin: 0 0 15px 0; font-size: 16px;">T-Rex 2用 バンパーカバー</p>
+      <div style="background-color: #ff9900; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">
+        Amazonで詳細を見る ▶
+      </div>
+    </div>
   </a>
 </div>
