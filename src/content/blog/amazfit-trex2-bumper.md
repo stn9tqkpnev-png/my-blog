@@ -62,3 +62,18 @@ Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパ�
     </div>
   </a>
 </div>
+
+<div style="text-align: center; margin: 40px 0;">
+  <a href="https://link.amazon/B0eCn4zla" target="_blank" rel="noopener" style="display: block; max-width: 400px; margin: 0 auto; text-decoration: none; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #fff;">
+    <div style="background-color: #f3f3f3; padding: 15px; border-bottom: 1px solid #ddd;">
+      <span style="font-size: 14px; color: #555;">＼ 上位モデル・最新モデルはこちら ／</span>
+    </div>
+    <div style="padding: 20px;">
+      <img src="/images/amazon-trex3.avif" alt="Amazfit T-Rex 3" style="max-width: 80%; height: auto; margin-bottom: 15px; border-radius: 8px;">
+      <p style="color: #333; font-weight: bold; margin: 0 0 15px 0; font-size: 16px;">Amazfit T-Rex 3 スマートウォッチ</p>
+      <div style="background-color: #ff9900; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">
+        Amazonで詳細を見る ▶
+      </div>
+    </div>
+  </a>
+</div>
