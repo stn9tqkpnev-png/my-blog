@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+				</div>
+				<div class="prose">
+					<div class="title">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+							{updatedDate && (
+								<div class="last-updated-on">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)}
+						</div>
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					<slot />
+<div style="margin: 40px 0; text-align: center; overflow: hidden; width: 100%;"><script is:inline type="text/javascript">rakuten_design="slide";rakuten_affiliateId="01325b1c.c34d94f4.112b000b.86ae4566";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="300x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1793484988544";</script><script is:inline type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script></div>
+				</div>
+			</article>
+		</main>
+		<Footer />
+	<script is:inline>
+  document.querySelectorAll("pre").forEach((pre) => {
+    if (pre.querySelector(".copy-btn")) return;
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.innerText = "コピー";
+    btn.style.cssText = "position:absolute;top:8px;right:8px;background:#333;color:#fff;border:none;border-radius:4px;padding:4px 8px;font-size:12px;cursor:pointer;z-index:10;";
+    btn.onclick = () => {
+      const code = pre.querySelector("code");
+      if (code) {
+        navigator.clipboard.writeText(code.innerText).then(() => {
+          btn.innerText = "コピーしました！";
+          setTimeout(() => { btn.innerText = "コピー"; }, 2000);
+        });
+      }
+    };
+    pre.style.position = "relative";
+    pre.appendChild(btn);
+  });
+</script>
+</body>
+</html>
