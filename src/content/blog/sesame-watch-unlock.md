@@ -204,15 +204,24 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 2. カスタムアクションを追加します。
 3. 次の表のとおりに入力します。
 
-| 項目 | 入力する内容 |
-|---|---|
-| TITLE | `UNLOCK`（施錠用は `LOCK`） |
-| METHOD | `GET` |
-| URL | 手順3でコピーしたURLの最後に `?action=unlock` を付ける（施錠用は `?action=lock`） |
-| HEADERS | 空欄 |
-| BODY | 空欄 |
+**TITLE**
+`UNLOCK` （施錠用を作る場合は `LOCK`）
 
-※アプリの画面では「名前」ではなく「TITLE」と表示されます。
+**METHOD**
+`GET`
+
+**URL**
+手順3でコピーしたURLの**一番最後**に、以下の文字を追加して入力します。
+（解錠用）`?action=unlock`
+（施錠用）`?action=lock`
+
+※入力例: `https://script.google.com/macros/s/xxxx/exec?action=unlock`
+
+**HEADERS**
+空欄のまま
+
+**BODY**
+空欄のまま
 
 アプリの説明では、1画面に1〜4個のボタンを並べられます。無料版で作れるアクションの数には、上限があります。上限を超える場合は、有料の Pro が必要です。
 
