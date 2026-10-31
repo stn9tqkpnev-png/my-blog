@@ -1,7 +1,7 @@
 ---
 title: "時譡でSESAME 5を解抖・施抖する方法(Amazfit T-Rex 2・雲服務不要)
 description: "Amazfit T-Reex 2とミニアプョクパーパヱードルとして开けさせる方法。安全管理の注意仅き。"
-pubDate: "Nov 01 2026"
+pubDate: "Oct 31 2026"
 heroImage: "../../assets/hero-watch-lock-unlock.jpg"
 ---
 
