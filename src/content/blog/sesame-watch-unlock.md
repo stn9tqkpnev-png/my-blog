@@ -5,29 +5,91 @@ pubDate: "Oct 31 2026"
 heroImage: "../../assets/hero-watch-lock-unlock.jpg"
 ---
 
-# スマートウォッチでSESAME 5を解錠・施錠する方法
-
 腕時計のボタンをタップするだけで、自宅の SESAME 5 を解錠・施錠する方法を紹介します。使うのは、Amazfit T-Rex 2 と、Amazfit の時計で動くミニアプリ「HTTP」です。
+
+「HTTP」アプリは、時計から HTTP リクエストを送れるミニアプリです。送り先と内容を一度設定しておけば、時計のボタンを押すだけで、そのリクエストを送ってくれます。
+
+「HTTP」アプリが動く Amazfit の時計なら、T-Rex 2 以外でも同じ方法でできます。
 
 HTTP リクエストを受け取る側には、本来はサーバーが必要です。この記事では、Google Apps Script(GAS)を使うことで、サーバーを用意せずに実現します。
 
+**注意**: この記事の内容は、玄関の鍵を操作するものです。APIキーやシークレットキーなどの秘密情報は、記事や GitHub に絶対に載せないでください。
+
+## 仕組み
+
+- **時計の「HTTP」アプリ**: ボタンを押すと、リクエストを送る
+- **GAS**: リクエストを受け取る中継役。SESAME の API に命令を送る
+- **SESAME Web API**: クラウド経由で SESAME 5 を動かす
+
+## この記事でやること
+
+1. SESAME の準備をする
+2. GAS にコードを入れる
+3. GAS を Web アプリとして公開する
+4. 時計に「HTTP」アプリを入れる
+5. 解錠・施錠のボタンを作る
+6. 時計で試す
+
 ## 準備するもの
 
-- SESAME 5 と Wi-Fiモジュール2
+- SESAME 5 と Wi-Fiモジュール2(SESAME 5 がインターネットにつながっている状態にしておく必要があります)
 - SESAME アプリ(SESAME 5 を登録済みのもの)
 - Amazfit T-Rex 2 と、Zepp アプリを入れたスマホ
 - Google アカウント
+- パソコン(なくても可能ですが、GAS の画面はパソコンのほうが操作しやすいです)
+
+※ミニアプリ「HTTP」は、第三者(作者: galulex 氏)が開発した Amazfit 用のアプリです。アプリ内課金があります。利用は自己責任でお願いします。
 
 ## 手順1 SESAME の準備をする
 
-GAS から SESAME を動かすために、APIキー、UUID、シークレットキーの3つの情報を取得します。
-1. 「biz.candyhouse.co」にログインし、開発者向けページからAPIキーを取得します。
-2. SESAMEアプリの「鍵をシェア」からQRコードを表示し、スクショを撮ります。
-3. 「sesame-qr-reader.vercel.app」などのツールでQRコードを読み取り、Secret KeyとUUIDを取得します。
+GAS から SESAME を動かすために、次の3つの情報が必要です。
+
+- **APIキー**: SESAME の Web API を使うための鍵
+- **UUID**: 操作する SESAME を指定する ID
+- **シークレットキー**: 命令に署名するための鍵
+
+この手順は、CANDY HOUSE が公開している情報と、有志の方が公開している資料をもとにしています。画面の表示やメニュー名は、変更されている場合があります。
+
+### A. APIキーを取得する
+
+APIキーは、CANDY HOUSE の法人向けサービス「SESAME Biz」の、開発者向けのページで取得します。
+
+1. スマホやパソコンのブラウザで、「biz.candyhouse.co」を開きます。
+2. メールアドレスを入力して、ログインします。
+3. ログインしたら、画面の左上にあるメニューを開きます。
+4. メニューの中から、「開発者向け」を選びます。
+5. 表示されたページで、APIキーをコピーします。
+6. コピーしたAPIキーを、メモ帳などに控えます。
+
+### B. シークレットキーと UUID を取得する
+
+この2つは、SESAME アプリの「鍵のシェア」で表示される QR コードから取り出します。
+
+1. スマホの SESAME アプリを開き、SESAME 5 を選びます。
+2. 「鍵をシェア」を選びます。メニュー名は、アプリのバージョンによって多少異なります。
+3. 鍵の種類は、「マネージャー」(または「オーナー」)を選びます。「ゲスト」の鍵では、取り出せません。
+4. QR コードが表示されたら、スクリーンショットを撮ります。
+5. ブラウザで、QR コード読み取りツール(`sesame-qr-reader.vercel.app`)を開きます。
+6. 撮ったスクリーンショットを、ツールにアップロードします。
+7. 読み取り結果に、「Secret Key」と「UUID」が表示されます。2つをコピーして、メモ帳などに控えます。
+8. 控え終わったら、QR コードのスクリーンショットを削除します。「最近削除した項目」(ゴミ箱)からも、削除してください。
+
+QR コードは、鍵そのものです。他人に見せたり、ネットに載せたりしないでください。この記事に QR コードの画像を載せていないのも、そのためです。
+
+UUID は、SESAME アプリのデバイス情報の画面でも、確認できます。
+
+### C. 3つの情報を確認する
+
+3つとも、メモ帳などに控えたら、手順1は完了です。人に見せたり、ネットに載せたりしないでください。
 
 ## 手順2 GAS にコードを入れる
 
-ブラウザで `script.google.com` を開き、新しいプロジェクトを作成します。以下のコードを貼り付けてください。
+ブラウザで `script.google.com` を開き、Google アカウントでログインします。
+
+1. 「新しいプロジェクト」をクリックします。
+2. 左上の「無題のプロジェクト」をクリックして、「SESAME」など、わかりやすい名前に変えます。
+3. エディタに最初から入っているコードを、すべて削除します。
+4. 次のコードを貼り付けます。
 
 ```javascript
 const API_KEY = "あなたのAPIキー";
@@ -114,42 +176,72 @@ function padBlock(block) { const padded = block.slice(); padded.push(0x80); whil
 function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 = subkeys[0], K2 = subkeys[1]; const blockSize = 16; let n = Math.ceil(message.length / blockSize); let flag; if (n === 0) { n = 1; flag = false; } else { flag = (message.length % blockSize === 0); } const blocks = []; for (let i = 0; i < n - 1; i++) blocks.push(message.slice(i * blockSize, (i + 1) * blockSize)); const lastBlock = message.slice((n - 1) * blockSize); let mLast; if (flag) mLast = xorBytes(lastBlock, K1); else mLast = xorBytes(padBlock(lastBlock), K2); let X = new Array(16).fill(0); for (let i = 0; i < blocks.length; i++) X = aesEncryptBlock(xorBytes(X, blocks[i]), key); return aesEncryptBlock(xorBytes(mLast, X), key); }
 ```
 
+5. 画面上部のディスクのアイコンで、保存します。
+
 ## 手順3 GAS を Web アプリとして公開する
 
 1. 画面右上の「デプロイ」から「新しいデプロイ」を選びます。
 2. 種類の歯車アイコンから「ウェブアプリ」を選びます。
-3. 「次のユーザーとして実行」は「自分」、「アクセスできるユーザー」は「全員」にします。
-4. 「デプロイ」を押し、表示されたURLをコピーします。
+3. 「次のユーザーとして実行」は「自分」にします。
+4. 「アクセスできるユーザー」は「全員」にします。時計のアプリは、Google にログインしていないためです。
+5. 「デプロイ」を押し、初めての場合に出る権限の承認画面で、許可します。
+6. 表示された「ウェブアプリ」の URL をコピーして、メモ帳などに控えます。手順5で使います。
+
+※コードを書き換えたときは、「デプロイを管理」から新しいバージョンに更新しないと、公開中のものに反映されません。
 
 ## 手順4 時計に「HTTP」アプリを入れる
 
-Zepp アプリから、T-Rex 2 のアプリストアで「HTTP」を検索し、インストールします。
+1. スマホで Zepp アプリを開きます。
+2. T-Rex 2 のアプリストアを開きます。
+3. アプリストアで「ユーティリティ」のカテゴリを開き、「HTTP」を検索します。作者が「galulex」のものです。
+4. インストールします。
 
 ## 手順5 解錠・施錠のボタンを作る
 
-Zepp アプリで「HTTP」アプリの設定画面を開き、カスタムアクションを追加します。アプリの画面を見ながら、以下の通りに入力してください。
+「HTTP」アプリの設定は、Zepp アプリから行います。時計のボタンひとつにつき、リクエストをひとつ設定します。解錠用と施錠用の、2つを作ります。
 
-**1. 解錠（UNLOCK）ボタンの設定**
-- **TITLE**: `UNLOCK`
-- **METHOD**: `GET`
-- **URL**: 手順3でコピーしたURLの**一番最後**に、半角で以下の文字を追加します。
-  `?action=unlock`
-  （入力例: `https://script.google.com/macros/s/xxxx/exec?action=unlock`）
-- **HEADERS**: 空欄
-- **BODY**: 空欄
+1. Zepp アプリで、「HTTP」アプリの設定画面を開きます。
+2. カスタムアクションを追加します。
+3. 次の表のとおりに入力します。
 
-**2. 施錠（LOCK）ボタンの設定**
-同様に作成し、**TITLE**を `LOCK` にして、URLの末尾に `?action=lock` を追加します。
+| 項目 | 入力する内容 |
+|---|---|
+| TITLE | `UNLOCK`（施錠用は `LOCK`） |
+| METHOD | `GET` |
+| URL | 手順3でコピーしたURLの最後に `?action=unlock` を付ける（施錠用は `?action=lock`） |
+| HEADERS | 空欄 |
+| BODY | 空欄 |
 
+※アプリの画面では「名前」ではなく「TITLE」と表示されます。
+
+アプリの説明では、1画面に1〜4個のボタンを並べられます。無料版で作れるアクションの数には、上限があります。上限を超える場合は、有料の Pro が必要です。
+
+## 手順6 時計で試す
+
+まず、動きを目で確認しやすい「施錠」から試します。
+1. 時計で「HTTP」アプリを開き、施錠のボタンをタップします。
+2. SESAME が動いたかを、目で見て確認します。SESAME アプリで、状態を見ても構いません。
+3. 問題なければ、解錠も試します。
+
+## うまく動かないとき
+
+- Web アプリの URL が、正しくコピーできているか確認します。
+- コードを書き換えた場合は、「デプロイを管理」で新しいバージョンに更新したか確認します。
+- SESAME 5 が、Wi-Fiモジュール2を通じてインターネットにつながっているか確認します。
+- 画面に結果が「成功」と出ても、実際に鍵が動いたとは限りません。SESAME アプリで状態を確認してください。
 
 ## セキュリティ上の注意
 
-**WebアプリのURLは、玄関の鍵と同じです。** 他人に知られると、誰でも解錠できる可能性があります。
-URLは絶対にSNSやブログに公開せず、厳重に管理してください。もし漏洩した可能性がある場合は、GASのデプロイを削除し、SESAMEのAPIキーを再発行してください。
+**Web アプリの URL は、玄関の鍵と同じです。** 他人に知られると、誰でも解錠できる可能性があります。
+
+- URLは、推測されにくい長いランダム文字列にします。（※GASのURL自体が長いランダム文字列になっています）
+- 秘密情報は、記事や GitHub に実際の値を載せません。
+- 漏れたかもしれないときは、デプロイを削除して作り直します。SESAME の APIキーも、必要に応じて再発行します。
+- **万が一に備え、URLは絶対にSNSやブログに公開せず、厳重に管理してください。**
 
 ## まとめ
 
-時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME 5 を腕時計から操作できました。
+時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME 5 を腕時計から操作できました。使う前に、漏えいしたときの対応手順を決めておくことをおすすめします。
 
 <div style="text-align: center; margin: 40px 0;">
   <a href="https://www.amazon.co.jp/s?k=SESAME+5&tag=workbenchnote-22" target="_blank" rel="noopener" style="display: block; max-width: 400px; margin: 0 auto; text-decoration: none; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #fff !important;">
@@ -157,7 +249,8 @@ URLは絶対にSNSやブログに公開せず、厳重に管理してくださ�
       <span style="font-size: 14px; color: #555 !important;">＼ 関連商品 ／</span>
     </div>
     <div style="padding: 20px;">
-      <img src="/images/sesame5.avif" alt="SESAME 5" style="max-width: 80%; height: auto; margin-bottom: 15px; border-radius: 8px;"><p style="color: #333 !important; font-weight: bold; margin: 0 0 15px 0; font-size: 16px;">SESAME 5 スマートロック</p>
+      <img src="/images/sesame5.avif" alt="SESAME 5" style="max-width: 80%; height: auto; margin-bottom: 15px; border-radius: 8px;">
+      <p style="color: #333 !important; font-weight: bold; margin: 0 0 15px 0; font-size: 16px;">SESAME 5 スマートロック</p>
       <div style="background-color: #ff9900 !important; color: #fff !important; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">
         Amazonで詳細を見る ▶
       </div>
