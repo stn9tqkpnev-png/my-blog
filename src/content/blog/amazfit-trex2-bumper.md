@@ -50,9 +50,6 @@ Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパ�
 
 <div style="text-align: center; margin: 30px 0;">
   <a href="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" target="_blank" rel="noopener">
-    <img src="https://m.media-amazon.com/images/P/B0HFQQ51B6.09._SCLZZZZZZZ_SX500_.jpg" alt="Amazonで購入する" style="max-width: 70%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="../../assets/amazon-banner.svg" alt="Amazonで詳細を見る" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
   </a>
-  <p style="margin-top: 15px;">
-    <a href="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" target="_blank" rel="noopener" style="display: inline-block; padding: 10px 20px; background-color: #ff9900; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold;">Amazonで商品ページを見る</a>
-  </p>
 </div>
