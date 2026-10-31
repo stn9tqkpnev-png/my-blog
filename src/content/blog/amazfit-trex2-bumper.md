@@ -1,24 +1,22 @@
 ---
-title: "Amazfit T-Rex 2にAliExpressのバンパーカバーを装着レビュー！傷隠しにも最適"
-description: "Amazfit T-Rex 2用の激安バンパーカバーをAliExpressで購入。光沢感、フィット感、装着感、傷隠し効果を正直レビュー。付けている違和感ゼロでゴツく見えるおすすめアイテムです。"
+title: "Amazfit T-Rex 2にAmazonのバンパーカバーを装着レビュー！傷隠しにも最適"
+description: "Amazfit T-Rex 2用のバンパーカバーをAmazonで購入。光沢感、フィット感、装着感、傷隠し効果を正直レビュー。付けている違和感ゼロでゴツく見えるおすすめアイテムです。"
 pubDate: "Oct 30 2026"
 heroImage: "../../assets/trex2-bumper.jpg"
 ---
-
 
 ## はじめに：T-Rex 2のフレームに傷が…
 
 Amazfit T-Rex 2を使っていると、どうしてもフレーム部分に傷が付いてしまいます。私も気づいたらフレームに傷が付いていました。
 
-そこで傷を隠すために購入したのが、AliExpressで見つけたバンパーカバーです。価格は625円。カラーはBlack red whiteを選びました。
+そこで傷を隠すために購入したのが、Amazonで見つけたバンパーカバーです。価格は787円。カラーはBlack Red Whiteを選びました。
 
 ## 購入したバンパーカバーの詳細
 
-- 商品名：複数の色の保護バンパーカバー、超薄型デザイン、ハードハウジングシェル、耐衝撃性ウォッチケース、Amazfit T Rex 2ウォッチ用
-- 価格：625円
-- カラー：Black red white
-- 購入先：AliExpress
-- 10点以上注文で1点あたり443円、2,400円で480円OFFクーポンも利用可能
+- 商品名：T Rex 2 用 耐衝撃 保護ケース, ウォッチ バンパー カバー, 防護 ケース for T Rex 2 (Black Red)
+- 価格：787円
+- カラー：Black Red White
+- 購入先：Amazon
 
 ## 装着感と見た目
 
@@ -28,7 +26,7 @@ Amazfit T-Rex 2を使っていると、どうしてもフレーム部分に傷�
 
 見た目はちょっとゴツくなりますが、いい意味でタフ感が増すのでおすすめです。
 
-![バンパーカバー装着時の様子](../../assets/trex2-bumper-1.jpg)
+<img src="../../assets/trex2-bumper-1.jpg" alt="バンパーカバー装着時の様子" style="max-width: 100%; height: auto; border-radius: 8px;" />
 
 ## 耐久性と外し方
 
@@ -42,4 +40,4 @@ Amazfit T-Rex 2を使っていると、どうしてもフレーム部分に傷�
 
 Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパーカバーはおすすめです。
 
-[AliExpressの商品ページはこちら](URL_HERE)
+[Amazonの商品ページはこちら](URL_HERE)
