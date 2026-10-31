@@ -54,6 +54,7 @@ Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパ�
       <span style="font-size: 14px; color: #555;">＼ 今回紹介した商品 ／</span>
     </div>
     <div style="padding: 20px;">
+      <img src="/images/amazon-item.webp" alt="T-Rex 2 バンパーカバー" style="max-width: 80%; height: auto; margin-bottom: 15px; border-radius: 8px;">
       <p style="color: #333; font-weight: bold; margin: 0 0 15px 0; font-size: 16px;">T-Rex 2用 バンパーカバー</p>
       <div style="background-color: #ff9900; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">
         Amazonで詳細を見る ▶
