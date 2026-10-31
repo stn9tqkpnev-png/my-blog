@@ -127,12 +127,20 @@ Zepp アプリから、T-Rex 2 のアプリストアで「HTTP」を検索し、
 
 ## 手順5 解錠・施錠のボタンを作る
 
-Zepp アプリで「HTTP」アプリの設定画面を開き、カスタムアクションを追加します。
+Zepp アプリで「HTTP」アプリの設定画面を開き、カスタムアクションを追加します。アプリの画面を見ながら、以下の通りに入力してください。
 
-- **名前**: 解錠
-- **URL**: 手順3でコピーしたURLの末尾に `?action=unlock` を付ける
+**1. 解錠（UNLOCK）ボタンの設定**
+- **TITLE**: `UNLOCK`
+- **METHOD**: `GET`
+- **URL**: 手順3でコピーしたURLの**一番最後**に、半角で以下の文字を追加します。
+  `?action=unlock`
+  （入力例: `https://script.google.com/macros/s/xxxx/exec?action=unlock`）
+- **HEADERS**: 空欄
+- **BODY**: 空欄
 
-施錠ボタンも同様に作成し、URLの末尾を `?action=lock` にします。
+**2. 施錠（LOCK）ボタンの設定**
+同様に作成し、**TITLE**を `LOCK` にして、URLの末尾に `?action=lock` を追加します。
+
 
 ## セキュリティ上の注意
 
