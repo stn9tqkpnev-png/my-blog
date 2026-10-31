@@ -26,7 +26,7 @@ Amazfit T-Rex 2を使っていると、どうしてもフレーム部分に傷�
 
 見た目はちょっとゴツくなりますが、いい意味でタフ感が増すのでおすすめです。
 
-<img src="../../assets/trex2-bumper-1.jpg" alt="バンパーカバー装着時の様子" style="max-width: 100%; height: auto; border-radius: 8px;" />
+![バンパーカバー装着時の様子](../../assets/trex2-bumper-1.jpg)
 
 ## 耐久性と外し方
 
