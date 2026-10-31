@@ -40,4 +40,4 @@ Amazfit T-Rex 2を使っていると、どうしてもフレーム部分に傷�
 
 Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパーカバーはおすすめです。
 
-[Amazonの商品ページはこちら](https://link.amazon/B00jlKurv)
+[![Amazonで購入する](https://m.media-amazon.com/images/P/B0HFQQ51B6.09._SCLZZZZZZZ_SX500_.jpg)](https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22)
