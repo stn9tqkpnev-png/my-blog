@@ -2,7 +2,7 @@
 title: "Amazfit T-Rex 2 本体レビュー"
 description: "ここに記事の説明文を入力してください。"
 pubDate: "Nov 01 2026"
-heroImage: "../../assets/default.jpg"
+heroImage: "../../assets/trex2-bumper.jpg"
 ---
 
 import AffiliateCard from "../../components/AffiliateCard.astro";
