@@ -4,6 +4,7 @@ description: "Amazfit T-Rex 2用のバンパーカバーをAmazonで購入。光
 pubDate: "Oct 30 2026"
 heroImage: "../../assets/trex2-bumper.jpg"
 import AffiliateCard from "../../components/AffiliateCard.astro";
+import RelatedArticle from "../../components/RelatedArticle.astro";
 ---
 
 ## はじめに：T-Rex 2のフレームに傷が…
@@ -63,11 +64,4 @@ Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパ�
 
 ## あわせて読みたい
 
-<div style="margin: 40px 0; text-align: center;">
-  <a href="/blog/sesame-watch-unlock/" style="display: block; max-width: 400px; margin: 0 auto; text-decoration: none; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #fff;">
-    <img src="/images/sesame-watch-unlock-card.jpg" alt="SESAME 5" style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="padding: 15px;">
-      <p style="color: #333; font-weight: bold; margin: 0; font-size: 16px;">スマートウォッチでSESAME 5を解錠・施錠する方法</p>
-    </div>
-  </a>
-</div>
+<RelatedArticle url="/blog/sesame-watch-unlock/" image="/images/sesame-watch-unlock-card.jpg" title="スマートウォッチでSESAME 5を解錠・施錠する方法" />
