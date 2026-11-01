@@ -78,6 +78,11 @@ Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパ�
   </a>
 </div>
 
+<div style="margin: 40px 0; text-align: center;">
+<div style="max-width: 400px; margin: 0 auto 20px auto; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff;"><a href="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" target="_blank" rel="noopener" style="text-decoration: none; display: block; padding: 15px;"><img src="/images/amazon-item.webp" style="max-width: 80%; height: auto; border-radius: 8px; margin-bottom: 10px;" alt="T-Rex 2用 バンパーカバー"><p style="color: #333; font-weight: bold; margin: 0 0 10px 0;">T-Rex 2用 バンパーカバー</p><div style="background-color: #ff9900; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block;">Amazonで詳細を見る ▶</div></a></div>
+<div style="max-width: 400px; margin: 0 auto 20px auto; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff;"><a href="https://link.amazon/B0eCn4zla" target="_blank" rel="noopener" style="text-decoration: none; display: block; padding: 15px;"><img src="/images/amazon-trex3.avif" style="max-width: 80%; height: auto; border-radius: 8px; margin-bottom: 10px;" alt="Amazfit T-Rex 3"><p style="color: #333; font-weight: bold; margin: 0 0 10px 0;">Amazfit T-Rex 3 スマートウォッチ</p><div style="background-color: #ff9900; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block;">Amazonで詳細を見る ▶</div></a></div>
+<div style="max-width: 400px; margin: 0 auto; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff;"><a href="https://www.amazon.co.jp/s?k=SESAME+5&tag=workbenchnote-22" target="_blank" rel="noopener" style="text-decoration: none; display: block; padding: 15px;"><img src="/images/sesame5.avif" style="max-width: 80%; height: auto; border-radius: 8px; margin-bottom: 10px;" alt="SESAME 5"><p style="color: #333; font-weight: bold; margin: 0 0 10px 0;">SESAME 5 スマートロック</p><div style="background-color: #ff9900; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block;">Amazonで詳細を見る ▶</div></a></div>
+</div>
 
 ---
 
