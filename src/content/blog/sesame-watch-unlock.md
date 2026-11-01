@@ -272,4 +272,11 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 
 ## あわせて読みたい
 
-[Amazfit T-Rex 2にAmazonのバンパーカバーを装着レビュー](/blog/amazfit-trex2-bumper/)
+<div style="margin: 40px 0; text-align: center;">
+  <a href="/blog/amazfit-trex2-bumper/" style="display: block; max-width: 400px; margin: 0 auto; text-decoration: none; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #fff;">
+    <img src="/images/amazfit-trex2-bumper-card.jpg" alt="T-Rex 2 バンパーカバー" style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="padding: 15px;">
+      <p style="color: #333; font-weight: bold; margin: 0; font-size: 16px;">Amazfit T-Rex 2にAmazonのバンパーカバーを装着レビュー</p>
+    </div>
+  </a>
+</div>
