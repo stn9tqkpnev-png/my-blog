@@ -77,3 +77,10 @@ Amazfit T-Rex 2の傷防止・傷隠しをしたい方には、このバンパ�
     </div>
   </a>
 </div>
+
+
+---
+
+## あわせて読みたい
+
+[スマートウォッチでSESAME 5を解錠・施錠する方法](/blog/sesame-watch-unlock/)

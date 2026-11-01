@@ -266,3 +266,10 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
     </div>
   </a>
 </div>
+
+
+---
+
+## あわせて読みたい
+
+[Amazfit T-Rex 2にAmazonのバンパーカバーを装着レビュー](/blog/amazfit-trex2-bumper/)
