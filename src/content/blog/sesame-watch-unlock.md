@@ -252,20 +252,7 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 
 時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME 5 を腕時計から操作できました。使う前に、漏えいしたときの対応手順を決めておくことをおすすめします。
 
-<div style="text-align: center; margin: 40px 0;">
-  <a href="https://www.amazon.co.jp/s?k=SESAME+5&tag=workbenchnote-22" target="_blank" rel="noopener" style="display: block; max-width: 400px; margin: 0 auto; text-decoration: none; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #fff !important;">
-    <div style="background-color: #f3f3f3 !important; padding: 15px; border-bottom: 1px solid #ddd;">
-      <span style="font-size: 14px; color: #555 !important;">＼ 関連商品 ／</span>
-    </div>
-    <div style="padding: 20px;">
-      <img src="/images/sesame5.avif" alt="SESAME 5" style="max-width: 80%; height: auto; margin-bottom: 15px; border-radius: 8px;">
-      <p style="color: #333 !important; font-weight: bold; margin: 0 0 15px 0; font-size: 16px;">SESAME 5 スマートロック</p>
-      <div style="background-color: #ff9900 !important; color: #fff !important; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">
-        Amazonで詳細を見る ▶
-      </div>
-    </div>
-  </a>
-</div>
+
 
 <div style="margin: 40px 0; text-align: center;">
 <div style="max-width: 400px; margin: 0 auto 20px auto; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff;"><a href="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" target="_blank" rel="noopener" style="text-decoration: none; display: block; padding: 15px;"><img src="/images/amazon-item.webp" style="max-width: 80%; height: auto; border-radius: 8px; margin-bottom: 10px;" alt="T-Rex 2用 バンパーカバー"><p style="color: #333; font-weight: bold; margin: 0 0 10px 0;">T-Rex 2用 バンパーカバー</p><div style="background-color: #ff9900; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block;">Amazonで詳細を見る ▶</div></a></div>
