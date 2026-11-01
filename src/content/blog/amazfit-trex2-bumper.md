@@ -4,9 +4,9 @@ description: "Amazfit T-Rex 2用のバンパーカバーをAmazonで購入。光
 pubDate: "Oct 30 2026"
 tags: ["ガジェット", "スマートウォッチ"]
 heroImage: "../../assets/trex2-bumper.jpg"
+---
 import AffiliateCard from "../../components/AffiliateCard.astro";
 import RelatedArticle from "../../components/RelatedArticle.astro";
----
 
 ## はじめに：T-Rex 2のフレームに傷が…
 

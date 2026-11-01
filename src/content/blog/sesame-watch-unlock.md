@@ -4,9 +4,9 @@ description: "Amazfit T-Rex 2とミニアプリ「HTTP」、そしてGASを使�
 pubDate: "Oct 31 2026"
 tags: ["ガジェット", "スマートウォッチ"]
 heroImage: "../../assets/hero-watch-lock-unlock.jpg"
+---
 import AffiliateCard from "../../components/AffiliateCard.astro";
 import RelatedArticle from "../../components/RelatedArticle.astro";
----
 
 腕時計のボタンをタップするだけで、自宅の SESAME 5 を解錠・施錠する方法を紹介します。使うのは、Amazfit T-Rex 2 と、Amazfit の時計で動くミニアプリ「HTTP」です。
 
