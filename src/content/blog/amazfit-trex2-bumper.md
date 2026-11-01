@@ -2,6 +2,7 @@
 title: "Amazfit T-Rex 2にAmazonのバンパーカバーを装着レビュー！傷隠しにも最適"
 description: "Amazfit T-Rex 2用のバンパーカバーをAmazonで購入。光沢感、フィット感、装着感、傷隠し効果を正直レビュー。付けている違和感ゼロでゴツく見えるおすすめアイテムです。"
 pubDate: "Oct 30 2026"
+tags: [\"ガジェット\", \"スマートウォッチ\"]
 heroImage: "../../assets/trex2-bumper.jpg"
 import AffiliateCard from "../../components/AffiliateCard.astro";
 import RelatedArticle from "../../components/RelatedArticle.astro";
