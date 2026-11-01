@@ -2,7 +2,7 @@
 title: "スマートウォッチでSESAME 5を解錠・施錠する方法(Amazfit T-Rex 2・サーバー不要)"
 description: "Amazfit T-Rex 2とミニアプリ「HTTP」、そしてGASを使って、サーバーなしでSESAME 5を腕時計から操作する方法を解説します。セキュリティ対策も解説。"
 pubDate: "Oct 31 2026"
-tags: [\"ガジェット\", \"スマートウォッチ\"]
+tags: ["ガジェット", "スマートウォッチ"]
 heroImage: "../../assets/hero-watch-lock-unlock.jpg"
 import AffiliateCard from "../../components/AffiliateCard.astro";
 import RelatedArticle from "../../components/RelatedArticle.astro";
