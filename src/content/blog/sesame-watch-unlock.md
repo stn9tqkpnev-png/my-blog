@@ -3,6 +3,7 @@ title: "スマートウォッチでSESAME 5を解錠・施錠する方法(Amazfi
 description: "Amazfit T-Rex 2とミニアプリ「HTTP」、そしてGASを使って、サーバーなしでSESAME 5を腕時計から操作する方法を解説します。セキュリティ対策も解説。"
 pubDate: "Oct 31 2026"
 heroImage: "../../assets/hero-watch-lock-unlock.jpg"
+import AffiliateCard from "../../components/AffiliateCard.astro";
 ---
 
 腕時計のボタンをタップするだけで、自宅の SESAME 5 を解錠・施錠する方法を紹介します。使うのは、Amazfit T-Rex 2 と、Amazfit の時計で動くミニアプリ「HTTP」です。
@@ -255,9 +256,9 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 
 
 <div style="margin: 40px 0; text-align: center;">
-<div style="max-width: 400px; margin: 0 auto 20px auto; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff;"><a href="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" target="_blank" rel="noopener" style="text-decoration: none; display: block; padding: 15px;"><img src="/images/amazon-item.webp" style="max-width: 80%; height: auto; border-radius: 8px; margin-bottom: 10px;" alt="T-Rex 2用 バンパーカバー"><p style="color: #333; font-weight: bold; margin: 0 0 10px 0;">T-Rex 2用 バンパーカバー</p><div style="background-color: #ff9900; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block;">Amazonで詳細を見る ▶</div></a></div>
-<div style="max-width: 400px; margin: 0 auto 20px auto; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff;"><a href="https://link.amazon/B0eCn4zla" target="_blank" rel="noopener" style="text-decoration: none; display: block; padding: 15px;"><img src="/images/amazon-trex3.avif" style="max-width: 80%; height: auto; border-radius: 8px; margin-bottom: 10px;" alt="Amazfit T-Rex 3"><p style="color: #333; font-weight: bold; margin: 0 0 10px 0;">Amazfit T-Rex 3 スマートウォッチ</p><div style="background-color: #ff9900; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block;">Amazonで詳細を見る ▶</div></a></div>
-<div style="max-width: 400px; margin: 0 auto; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff;"><a href="https://www.amazon.co.jp/s?k=SESAME+5&tag=workbenchnote-22" target="_blank" rel="noopener" style="text-decoration: none; display: block; padding: 15px;"><img src="/images/sesame5.avif" style="max-width: 80%; height: auto; border-radius: 8px; margin-bottom: 10px;" alt="SESAME 5"><p style="color: #333; font-weight: bold; margin: 0 0 10px 0;">SESAME 5 スマートロック</p><div style="background-color: #ff9900; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block;">Amazonで詳細を見る ▶</div></a></div>
+<AffiliateCard url="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" image="/images/amazon-item.webp" title="T-Rex 2用 バンパーカバー" />
+<AffiliateCard url="https://link.amazon/B0eCn4zla" image="/images/amazon-trex3.avif" title="Amazfit T-Rex 3 スマートウォッチ" />
+<AffiliateCard url="https://www.amazon.co.jp/s?k=SESAME+5&tag=workbenchnote-22" image="/images/sesame5.avif" title="SESAME 5 スマートロック" />
 </div>
 
 ---
