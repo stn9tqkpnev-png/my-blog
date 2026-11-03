@@ -7,7 +7,6 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import { Image } from 'astro:assets';
 
-const uniqueTags = [...new Set(posts.flatMap(post => post.data.tags || []))];
 const posts = (await getCollection('blog')).sort(
 (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
@@ -51,9 +50,9 @@ posts.map((post) => (
 <div class="widget">
 <h3 class="widget-title">カテゴリー</h3>
 <ul style="padding-left: 1.2rem; margin: 0; font-size: 0.9rem;">
-{uniqueTags.map((tag) => (
-  <li><a href={`/tags/${tag}/`}>{tag}</a></li>
-))}
+<li>ガジェット</li>
+<li>WEB・開発</li>
+<li>レビュー</li>
 </ul>
 </div>
 </aside>
