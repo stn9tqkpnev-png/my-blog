@@ -1,18 +1,18 @@
 ---
-title: "スマートウォッチでSESAME 5を解錠・施錠する方法(Amazfit T-Rex 2・サーバー不要)"
-description: "Amazfit T-Rex 2とミニアプリ「HTTP」、そしてGASを使って、サーバーなしでSESAME 5を腕時計から操作する方法を解説します。セキュリティ対策も解説。"
+title: "スマートウォッチでSESAME（セサミ） 5を解錠・施錠する方法(Amazfit（アマズフィット） T-Rex 2・サーバー不要)"
+description: "Amazfit（アマズフィット） T-Rex 2とミニアプリ「HTTP」、そしてGASを使って、サーバーなしでSESAME（セサミ） 5を腕時計から操作する方法を解説します。セキュリティ対策も解説。"
 pubDate: "Oct 31 2026"
-tags: ["ガジェット", "スマートウォッチ"]
+tags: ["アマズフィット", "セサミ", "ガジェット", "スマートウォッチ"]
 heroImage: "../../assets/hero-watch-lock-unlock.jpg"
 ---
 import AffiliateCard from "../../components/AffiliateCard.astro";
 import RelatedArticle from "../../components/RelatedArticle.astro";
 
-腕時計のボタンをタップするだけで、自宅の SESAME 5 を解錠・施錠する方法を紹介します。使うのは、Amazfit T-Rex 2 と、Amazfit の時計で動くミニアプリ「HTTP」です。
+腕時計のボタンをタップするだけで、自宅の SESAME（セサミ） 5 を解錠・施錠する方法を紹介します。使うのは、Amazfit（アマズフィット） T-Rex 2 と、Amazfit（アマズフィット） の時計で動くミニアプリ「HTTP」です。
 
 「HTTP」アプリは、時計から HTTP リクエストを送れるミニアプリです。送り先と内容を一度設定しておけば、時計のボタンを押すだけで、そのリクエストを送ってくれます。
 
-「HTTP」アプリが動く Amazfit の時計なら、T-Rex 2 以外でも同じ方法でできます。
+「HTTP」アプリが動く Amazfit（アマズフィット） の時計なら、T-Rex 2 以外でも同じ方法でできます。
 
 HTTP リクエストを受け取る側には、本来はサーバーが必要です。この記事では、Google Apps Script(GAS)を使うことで、サーバーを用意せずに実現します。
 
@@ -21,12 +21,12 @@ HTTP リクエストを受け取る側には、本来はサーバーが必要で
 ## 仕組み
 
 - **時計の「HTTP」アプリ**: ボタンを押すと、リクエストを送る
-- **GAS**: リクエストを受け取る中継役。SESAME の API に命令を送る
-- **SESAME Web API**: クラウド経由で SESAME 5 を動かす
+- **GAS**: リクエストを受け取る中継役。SESAME（セサミ） の API に命令を送る
+- **SESAME（セサミ） Web API**: クラウド経由で SESAME（セサミ） 5 を動かす
 
 ## この記事でやること
 
-1. SESAME の準備をする
+1. SESAME（セサミ） の準備をする
 2. GAS にコードを入れる
 3. GAS を Web アプリとして公開する
 4. 時計に「HTTP」アプリを入れる
@@ -35,27 +35,27 @@ HTTP リクエストを受け取る側には、本来はサーバーが必要で
 
 ## 準備するもの
 
-- SESAME 5 と Wi-Fiモジュール2(SESAME 5 がインターネットにつながっている状態にしておく必要があります)
-- SESAME アプリ(SESAME 5 を登録済みのもの)
-- Amazfit T-Rex 2 と、Zepp アプリを入れたスマホ
+- SESAME（セサミ） 5 と Wi-Fiモジュール2(SESAME（セサミ） 5 がインターネットにつながっている状態にしておく必要があります)
+- SESAME（セサミ） アプリ(SESAME（セサミ） 5 を登録済みのもの)
+- Amazfit（アマズフィット） T-Rex 2 と、Zepp アプリを入れたスマホ
 - Google アカウント
 - パソコン(なくても可能ですが、GAS の画面はパソコンのほうが操作しやすいです)
 
-※ミニアプリ「HTTP」は、第三者(作者: galulex 氏)が開発した Amazfit 用のアプリです。アプリ内課金があります。利用は自己責任でお願いします。
+※ミニアプリ「HTTP」は、第三者(作者: galulex 氏)が開発した Amazfit（アマズフィット） 用のアプリです。アプリ内課金があります。利用は自己責任でお願いします。
 
-## 手順1 SESAME の準備をする
+## 手順1 SESAME（セサミ） の準備をする
 
-GAS から SESAME を動かすために、次の3つの情報が必要です。
+GAS から SESAME（セサミ） を動かすために、次の3つの情報が必要です。
 
-- **APIキー**: SESAME の Web API を使うための鍵
-- **UUID**: 操作する SESAME を指定する ID
+- **APIキー**: SESAME（セサミ） の Web API を使うための鍵
+- **UUID**: 操作する SESAME（セサミ） を指定する ID
 - **シークレットキー**: 命令に署名するための鍵
 
 この手順は、CANDY HOUSE が公開している情報と、有志の方が公開している資料をもとにしています。画面の表示やメニュー名は、変更されている場合があります。
 
 ### A. APIキーを取得する
 
-APIキーは、CANDY HOUSE の法人向けサービス「SESAME Biz」の、開発者向けのページで取得します。
+APIキーは、CANDY HOUSE の法人向けサービス「SESAME（セサミ） Biz」の、開発者向けのページで取得します。
 
 1. スマホやパソコンのブラウザで、「biz.candyhouse.co」を開きます。
 2. メールアドレスを入力して、ログインします。
@@ -66,9 +66,9 @@ APIキーは、CANDY HOUSE の法人向けサービス「SESAME Biz」の、開�
 
 ### B. シークレットキーと UUID を取得する
 
-この2つは、SESAME アプリの「鍵のシェア」で表示される QR コードから取り出します。
+この2つは、SESAME（セサミ） アプリの「鍵のシェア」で表示される QR コードから取り出します。
 
-1. スマホの SESAME アプリを開き、SESAME 5 を選びます。
+1. スマホの SESAME（セサミ） アプリを開き、SESAME（セサミ） 5 を選びます。
 2. 「鍵をシェア」を選びます。メニュー名は、アプリのバージョンによって多少異なります。
 3. 鍵の種類は、「マネージャー」(または「オーナー」)を選びます。「ゲスト」の鍵では、取り出せません。
 4. QR コードが表示されたら、スクリーンショットを撮ります。
@@ -79,7 +79,7 @@ APIキーは、CANDY HOUSE の法人向けサービス「SESAME Biz」の、開�
 
 QR コードは、鍵そのものです。他人に見せたり、ネットに載せたりしないでください。この記事に QR コードの画像を載せていないのも、そのためです。
 
-UUID は、SESAME アプリのデバイス情報の画面でも、確認できます。
+UUID は、SESAME（セサミ） アプリのデバイス情報の画面でも、確認できます。
 
 ### C. 3つの情報を確認する
 
@@ -90,7 +90,7 @@ UUID は、SESAME アプリのデバイス情報の画面でも、確認でき�
 ブラウザで `script.google.com` を開き、Google アカウントでログインします。
 
 1. 「新しいプロジェクト」をクリックします。
-2. 左上の「無題のプロジェクト」をクリックして、「SESAME」など、わかりやすい名前に変えます。
+2. 左上の「無題のプロジェクト」をクリックして、「SESAME（セサミ）」など、わかりやすい名前に変えます。
 3. エディタに最初から入っているコードを、すべて削除します。
 4. 次のコードを貼り付けます。
 
@@ -232,15 +232,15 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 
 まず、動きを目で確認しやすい「施錠」から試します。
 1. 時計で「HTTP」アプリを開き、施錠のボタンをタップします。
-2. SESAME が動いたかを、目で見て確認します。SESAME アプリで、状態を見ても構いません。
+2. SESAME（セサミ） が動いたかを、目で見て確認します。SESAME（セサミ） アプリで、状態を見ても構いません。
 3. 問題なければ、解錠も試します。
 
 ## うまく動かないとき
 
 - Web アプリの URL が、正しくコピーできているか確認します。
 - コードを書き換えた場合は、「デプロイを管理」で新しいバージョンに更新したか確認します。
-- SESAME 5 が、Wi-Fiモジュール2を通じてインターネットにつながっているか確認します。
-- 画面に結果が「成功」と出ても、実際に鍵が動いたとは限りません。SESAME アプリで状態を確認してください。
+- SESAME（セサミ） 5 が、Wi-Fiモジュール2を通じてインターネットにつながっているか確認します。
+- 画面に結果が「成功」と出ても、実際に鍵が動いたとは限りません。SESAME（セサミ） アプリで状態を確認してください。
 
 ## セキュリティ上の注意
 
@@ -248,23 +248,23 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 
 - URLは、推測されにくい長いランダム文字列にします。（※GASのURL自体が長いランダム文字列になっています）
 - 秘密情報は、記事や GitHub に実際の値を載せません。
-- 漏れたかもしれないときは、デプロイを削除して作り直します。SESAME の APIキーも、必要に応じて再発行します。
+- 漏れたかもしれないときは、デプロイを削除して作り直します。SESAME（セサミ） の APIキーも、必要に応じて再発行します。
 - **万が一に備え、URLは絶対にSNSやブログに公開せず、厳重に管理してください。**
 
 ## まとめ
 
-時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME 5 を腕時計から操作できました。使う前に、漏えいしたときの対応手順を決めておくことをおすすめします。
+時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME（セサミ） 5 を腕時計から操作できました。使う前に、漏えいしたときの対応手順を決めておくことをおすすめします。
 
 
 
 <div style="margin: 40px 0; text-align: center;">
 <AffiliateCard url="https://www.amazon.co.jp/dp/B0HFQQ51B6?tag=workbenchnote-22" image="/images/amazon-item.webp" title="T-Rex 2用 バンパーカバー" />
-<AffiliateCard url="https://link.amazon/B0eCn4zla" image="/images/amazon-trex3.avif" title="Amazfit T-Rex 3 スマートウォッチ" />
-<AffiliateCard url="https://www.amazon.co.jp/s?k=SESAME+5&tag=workbenchnote-22" image="/images/sesame5.avif" title="SESAME 5 スマートロック" />
+<AffiliateCard url="https://link.amazon/B0eCn4zla" image="/images/amazon-trex3.avif" title="Amazfit（アマズフィット） T-Rex 3 スマートウォッチ" />
+<AffiliateCard url="https://www.amazon.co.jp/s?k=SESAME（セサミ）+5&tag=workbenchnote-22" image="/images/sesame5.avif" title="SESAME（セサミ） 5 スマートロック" />
 </div>
 
 ---
 
 ## あわせて読みたい
 
-<RelatedArticle url="/blog/amazfit-trex2-bumper/" image="/images/amazfit-trex2-bumper-card.jpg" title="Amazfit T-Rex 2にAmazonのバンパーカバーを装着レビュー" />
+<RelatedArticle url="/blog/amazfit-trex2-bumper/" image="/images/amazfit-trex2-bumper-card.jpg" title="Amazfit（アマズフィット） T-Rex 2にAmazonのバンパーカバーを装着レビュー" />
