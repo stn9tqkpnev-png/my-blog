@@ -166,3 +166,16 @@ a {
   color: var(--sub-text);
 }
 img { max-width: 100%; height: auto; }
+
+
+/* Code block improvements for mobile */
+pre {
+  -webkit-user-select: text;
+  user-select: text;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+pre code {
+  -webkit-user-select: text;
+  user-select: text;
+}
