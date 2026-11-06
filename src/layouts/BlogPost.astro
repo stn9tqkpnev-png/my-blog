@@ -1,6 +1,5 @@
 ---
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import SupportMessage from "../components/SupportMessage.astro";
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
@@ -77,8 +76,7 @@ const schema = {
 					{heroImage && <Image src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
-			<SupportMessage />
-<Breadcrumbs title={title} />
+			<Breadcrumbs title={title} />
 					<div class="title">
 						<div class="date">
 							<FormattedDate date={pubDate} />
