@@ -202,7 +202,9 @@ function padBlock(block) { const padded = block.slice(); padded.push(0x80); whil
 function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 = subkeys[0], K2 = subkeys[1]; const blockSize = 16; let n = Math.ceil(message.length / blockSize); let flag; if (n === 0) { n = 1; flag = false; } else { flag = (message.length % blockSize === 0); } const blocks = []; for (let i = 0; i < n - 1; i++) blocks.push(message.slice(i * blockSize, (i + 1) * blockSize)); const lastBlock = message.slice((n - 1) * blockSize); let mLast; if (flag) mLast = xorBytes(lastBlock, K1); else mLast = xorBytes(padBlock(lastBlock), K2); let X = new Array(16).fill(0); for (let i = 0; i < blocks.length; i++) X = aesEncryptBlock(xorBytes(X, blocks[i]), key); return aesEncryptBlock(xorBytes(mLast, X), key); }
 ```
 
-5. 画面上部のディスクのアイコンで、保存します。
+5. コードの先頭にある 、、 の部分を、手順1で控えたご自身の情報に書き換えてください。
+
+6. 画面上部のディスクのアイコンで、保存します。
 
 ## 手順3 GAS を Web アプリとして公開する
 
