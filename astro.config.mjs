@@ -1,11 +1,21 @@
 // @ts-check
 
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/noop'
+    }
+  },
+  markdown: {
+    processor: unified(),
+  },
 	site: 'https://workbench-note.com',
 	integrations: [mdx(), sitemap()],
 	fonts: [
