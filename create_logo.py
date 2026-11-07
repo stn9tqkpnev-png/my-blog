@@ -26,7 +26,7 @@ else:
 
 x, y = 20, 15
 d.text((x+8, y+8), "W", font=font_w, fill=(0,0,0,255))
-d.text((x, y), "W", font=font_w, fill="#ff9900", stroke_width=5, stroke_fill="#ffffff")
+d.text((x, y), "W", font=font_w, fill="#000000", stroke_width=5, stroke_fill="#007bff")
 x += d.textlength("W", font=font_w) - 5
 
 d.text((x+8, y+8), "orkbench", font=font, fill=(0,0,0,255))
