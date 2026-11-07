@@ -48,7 +48,10 @@ const schema = {
     box-shadow: var(--box-shadow);
     display: block;
   }
-  .prose {
+  .prose :global(ul), .prose :global(ol) {
+				padding-left: 1.5em !important;
+			}
+			.prose {
     width: 100%;
     margin: 0 auto;
   }
