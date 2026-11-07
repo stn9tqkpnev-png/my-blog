@@ -25,14 +25,17 @@ else:
     font_w = ImageFont.load_default()
 
 x, y = 20, 15
+# W (オレンジ文字、白フチ、黒影)
 d.text((x+8, y+8), "W", font=font_w, fill=(0,0,0,255))
-d.text((x, y), "W", font=font_w, fill="#000000", stroke_width=5, stroke_fill="#007bff")
+d.text((x, y), "W", font=font_w, fill="#ff9900", stroke_width=5, stroke_fill="#ffffff")
 x += d.textlength("W", font=font_w) - 5
 
+# orkbench (黒文字、青フチ、黒影)
 d.text((x+8, y+8), "orkbench", font=font, fill=(0,0,0,255))
 d.text((x, y), "orkbench", font=font, fill="#000000", stroke_width=5, stroke_fill="#007bff")
 x += d.textlength("orkbench", font=font) + 15
 
+# Note (黒文字、青フチ、オレンジ影)
 note_img = Image.new("RGBA", (300, 150), (255,255,255,0))
 nd = ImageDraw.Draw(note_img)
 nd.text((8, 8), "Note", font=font, fill="#ff9900")
