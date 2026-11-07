@@ -179,14 +179,3 @@ pre code {
   -webkit-user-select: text;
   user-select: text;
 }
-
-/* Fix list indentation */
-ul, ol {
-  padding-left: 1.5em;
-}
-li {
-  margin-bottom: 0.3em;
-}
-p:has(+ ul), p:has(+ ol) {
-  margin-bottom: 0.5em;
-}
