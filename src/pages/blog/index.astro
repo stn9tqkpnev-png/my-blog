@@ -9,9 +9,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
+<!doctype html>
 <html lang="ja">
 <head>
-  <BaseHead title={} description={SITE_DESCRIPTION} />
+  <BaseHead title={`記事一覧 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 </head>
 <body>
   <Header />
@@ -24,7 +25,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
   <main class="container-1col">
     <div style="display: flex; flex-direction: column; gap: 24px;">
       {posts.map((post) => (
-        <a href={} class="article-card" style="flex-direction: row; border-left: 6px solid var(--brand-orange); text-decoration: none; align-items: center;">
+        <a href={`/blog/${post.id}/`} class="article-card" style="flex-direction: row; border-left: 6px solid var(--brand-orange); text-decoration: none; align-items: center;">
           {post.data.heroImage && (
             <div style="width: 220px; flex-shrink: 0; height: 100%;" class="blog-list-thumb">
               <Image src={post.data.heroImage} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
@@ -37,13 +38,11 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
         </a>
       ))}
     </div>
-    <div style="display: flex; justify-content: center; gap: 8px; margin-top: 40px;">
-      <span style="display: inline-block; padding: 8px 16px; background: var(--brand-orange); color: #fff; border-radius: 8px; font-weight: bold;">1</span>
-      <a href="#" style="display: inline-block; padding: 8px 16px; background: #fff; border: 1px solid var(--border); color: var(--navy); border-radius: 8px;">2</a>
-    </div>
   </main>
   <style>
     @media (max-width: 640px) {
+      .article-card { flex-direction: column !important; align-items: stretch !important; }
+      .blog-list-thumb { width: 100% !important; height: 160px !important; }
     }
   </style>
   <Footer />
