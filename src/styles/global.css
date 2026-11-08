@@ -40,3 +40,4 @@ img{max-width:100%;height:auto}
 @media(min-width:820px){.article-grid{grid-template-columns:1fr 1fr}}
 .article-title a { color: #111111; }
 .article-title a:hover { color: var(--brand-orange); }
+body, .prose p, .prose li, .prose h2, .prose h3, .title h1 { color: #111111; }
