@@ -31,7 +31,7 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
         {posts.map((post) => (
           <article class="article-card">
             {post.data.heroImage && (
-              <a href={`/blog/${post.id}/`}><Image src={post.data.heroImage} alt="" class="article-thumb" /></a>
+              <a href={`/blog/${post.id}/`}><Image src={post.data.heroImage} alt={post.data.title} class="article-thumb" /></a>
             )}
             <div class="article-body">
               <h3 class="article-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
