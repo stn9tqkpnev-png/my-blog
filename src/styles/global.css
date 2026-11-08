@@ -38,3 +38,5 @@ img{max-width:100%;height:auto}
 @media(min-width:820px){.article-grid{grid-template-columns:1fr 1fr}}
 .article-grid{display:grid;grid-template-columns:1fr;gap:24px}
 @media(min-width:820px){.article-grid{grid-template-columns:1fr 1fr}}
+.article-title a { color: var(--navy); }
+.article-title a:hover { color: var(--brand-orange); }
