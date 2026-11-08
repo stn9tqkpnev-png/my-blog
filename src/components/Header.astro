@@ -1,29 +1,22 @@
 ---
 import { SITE_TITLE } from '../consts';
 ---
-<header style="background-color: #FFF6EC; border-bottom: 2px solid #e2e8f0; padding: 15px 20px;">
-  <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-    <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-      <svg width="44" height="44" viewBox="0 0 64 64">
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-title">
+      <svg width="38" height="38" viewBox="0 0 64 64">
         <rect width="64" height="64" rx="16" fill="#E8480C"></rect>
         <path d="M16 14h20l16 16-18 18-18-18z" fill="#FFFFFF"></path>
         <circle cx="25" cy="23" r="3.5" fill="#E8480C"></circle>
         <circle cx="48" cy="48" r="12" fill="#FFC400" stroke="#E8480C" stroke-width="3"></circle>
         <path d="M42.5 48l4 4 7-8" fill="none" stroke="#14213D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
-      <div style="display: flex; flex-direction: column; gap: 2px;">
-        <div style="font-family: system-ui, -apple-system, sans-serif; font-size: 26px; font-weight: 800; line-height: 1; letter-spacing: -0.5px; color: #14213D;">
-          Workbench<span style="color: #E8480C;">Note</span>
-        </div>
-        <div style="font-family: system-ui, -apple-system, sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: #14213D;">
-          GADGET REVIEW &amp; BEST BUY
-        </div>
-      </div>
+      <span>Workbench<span>Note</span></span>
     </a>
-    <nav style="display: flex; gap: 20px; font-size: 14px; font-weight: 600; color: #14213D; font-family: sans-serif;">
-      <a href="/" style="text-decoration: none; color: inherit;">HOME</a>
-      <a href="/blog" style="text-decoration: none; color: inherit;">ALL POSTS</a>
-      <a href="/profile" style="text-decoration: none; color: inherit;">PROFILE</a>
+    <nav class="nav-links">
+      <a href="/">HOME</a>
+      <a href="/blog">ALL POSTS</a>
+      <a href="/profile">PROFILE</a>
     </nav>
   </div>
 </header>

@@ -1,18 +1,19 @@
-<footer>
-  <p class="site-name">Workbench Note</p>
-  <div class="footer-links">
-    <a href="/profile">プロフィール</a>
-    <a href="/privacy">プライバシーポリシー</a>
-    <a href="/terms">免責事項</a>
-    <a href="/sitemap">サイトマップ</a>
-    <a href="/contact">お問い合わせ</a>
+---
+import { SITE_TITLE } from '../consts';
+const today = new Date();
+---
+<footer class="site-footer">
+  <div style="max-width: 1120px; margin: 0 auto;">
+    <div style="font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 20px; color: #fff;">
+      Workbench<span style="color: #FFC400;">Note</span>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <a href="/profile">プロフィール</a>
+      <a href="/privacy">プライバシーポリシー</a>
+      <a href="/disclaimer">免責事項</a>
+      <a href="/sitemap">サイトマップ</a>
+      <a href="/contact">お問い合わせ</a>
+    </div>
+    <div class="footer-copy">&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.</div>
   </div>
-  <p>&copy; 2026 Workbench Note</p>
 </footer>
-<style>
-  footer { padding: 3em 1em 6em; background: #f9f9f9; text-align: center; color: #555; font-size: 0.9rem; border-top: 1px solid #eaeaea; margin-top: 4rem; }
-  .site-name { font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; color: #222; }
-  .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem; }
-  .footer-links a { color: #555; text-decoration: none; }
-  .footer-links a:hover { text-decoration: underline; }
-</style>
