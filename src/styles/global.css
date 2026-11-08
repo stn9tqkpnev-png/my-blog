@@ -41,3 +41,4 @@ img{max-width:100%;height:auto}
 .article-title a { color: #111111; }
 .article-title a:hover { color: var(--brand-orange); }
 body, .prose p, .prose li, .prose h2, .prose h3, .title h1 { color: #111111; }
+.site-footer a { white-space: nowrap; }
