@@ -110,8 +110,9 @@ const schema = {
 
 <section style="margin-top: 60px; margin-bottom: 40px;">
 <h2 style="font-size: 20px; border-left: 6px solid var(--brand-orange); padding-left: 10px; margin-bottom: 20px; font-weight: bold;">最新記事一覧</h2>
+
 <div style="display: flex; flex-direction: column; gap: 15px;">
-{recentPosts.map((post) => (
+{recentPosts.slice(0, 5).map((post) => (
 <a href={} style="display: flex; gap: 15px; background: #fff; padding: 12px; border-radius: 10px; text-decoration: none; border: 1px solid #eee; align-items: center; transition: background 0.2s;">
 {post.data.heroImage && (
 <Image src={post.data.heroImage} alt="" style="width: 100px; height: 70px; object-fit: cover; border-radius: 6px; flex-shrink: 0;" />
@@ -123,10 +124,44 @@ const schema = {
 </a>
 ))}
 </div>
+
+{recentPosts.length > 5 && (
+<div id="hidden-posts" style="display: none; flex-direction: column; gap: 15px; margin-top: 15px;">
+{recentPosts.slice(5).map((post) => (
+<a href={} style="display: flex; gap: 15px; background: #fff; padding: 12px; border-radius: 10px; text-decoration: none; border: 1px solid #eee; align-items: center; transition: background 0.2s;">
+{post.data.heroImage && (
+<Image src={post.data.heroImage} alt="" style="width: 100px; height: 70px; object-fit: cover; border-radius: 6px; flex-shrink: 0;" loading="lazy" />
+)}
+<div style="flex: 1; min-width: 0;">
+<div style="font-size: 15px; font-weight: bold; color: #111; line-height: 1.4; margin-bottom: 4px;">{post.data.title}</div>
+<div style="font-size: 12px; color: #666;"><FormattedDate date={post.data.pubDate} /></div>
+</div>
+</a>
+))}
+</div>
+)}
+
 <div style="text-align: center; margin-top: 30px;">
-<a href="/blog/" class="btn-yellow">もっと見る</a>
+{recentPosts.length > 5 ? (
+<button id="load-more-btn" class="btn-yellow" style="cursor: pointer; border: none; display: inline-block;">もっと見る</button>
+) : (
+<a href="/blog/" class="btn-yellow">記事一覧へ</a>
+)}
 </div>
 </section>
+
+<script>
+const loadMoreBtn = document.getElementById('load-more-btn');
+if (loadMoreBtn) {
+loadMoreBtn.addEventListener('click', () => {
+const hiddenPosts = document.getElementById('hidden-posts');
+if (hiddenPosts) {
+hiddenPosts.style.display = 'flex';
+loadMoreBtn.style.display = 'none';
+}
+});
+}
+</script>
 
 
 
