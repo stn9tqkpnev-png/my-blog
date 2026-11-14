@@ -139,10 +139,10 @@ let visibleCount = 5;
 const items = document.querySelectorAll('.post-item');
 
 loadMoreBtn.addEventListener('click', () => {
-for (let i = visibleCount; i < visibleCount + 10 && i < items.length; i++) {
+for (let i = visibleCount; i < visibleCount + 5 && i < items.length; i++) {
 items[i].style.display = 'flex';
 }
-visibleCount += 10;
+visibleCount += 5;
 
 if (visibleCount >= items.length) {
 document.getElementById('load-more-wrapper').style.display = 'none';
