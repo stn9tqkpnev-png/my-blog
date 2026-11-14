@@ -16,7 +16,7 @@ const currentPath = Astro.url.pathname;
 const recentPosts = allPosts
   .filter(post => !currentPath.includes(post.id))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 5);
+  ;
 
 const schema = {
   "@context": "https://schema.org",
