@@ -5,11 +5,18 @@ import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { getCollection } from 'astro:content';
 import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+const allPosts = await getCollection('blog');
+const currentPath = Astro.url.pathname;
+const recentPosts = allPosts
+  .filter(post => !currentPath.includes(post.id))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
 
 const schema = {
   "@context": "https://schema.org",
@@ -100,6 +107,27 @@ const schema = {
 						<hr />
 					</div>
 			<slot />
+
+<section style="margin-top: 60px; margin-bottom: 40px;">
+<h2 style="font-size: 20px; border-left: 6px solid var(--brand-orange); padding-left: 10px; margin-bottom: 20px; font-weight: bold;">最新記事一覧</h2>
+<div style="display: flex; flex-direction: column; gap: 15px;">
+{recentPosts.map((post) => (
+<a href={} style="display: flex; gap: 15px; background: #fff; padding: 12px; border-radius: 10px; text-decoration: none; border: 1px solid #eee; align-items: center; transition: background 0.2s;">
+{post.data.heroImage && (
+<Image src={post.data.heroImage} alt="" style="width: 100px; height: 70px; object-fit: cover; border-radius: 6px; flex-shrink: 0;" />
+)}
+<div style="flex: 1; min-width: 0;">
+<div style="font-size: 15px; font-weight: bold; color: #111; line-height: 1.4; margin-bottom: 4px;">{post.data.title}</div>
+<div style="font-size: 12px; color: #666;"><FormattedDate date={post.data.pubDate} /></div>
+</div>
+</a>
+))}
+</div>
+<div style="text-align: center; margin-top: 30px;">
+<a href="/blog/" class="btn-yellow">もっと見る</a>
+</div>
+</section>
+
 
 
 
