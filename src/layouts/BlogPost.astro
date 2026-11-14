@@ -135,15 +135,22 @@ const schema = {
 <script>
 const loadMoreBtn = document.getElementById('load-more-btn');
 if (loadMoreBtn) {
-let visibleCount = 5;
 const items = document.querySelectorAll('.post-item');
+let visibleCount = 5;
 
+// 初期表示: 5件目以降を非表示にする
+items.forEach((item, index) => {
+if (index >= 5) item.style.display = 'none';
+});
+
+// ボタンクリック時の処理
 loadMoreBtn.addEventListener('click', () => {
 for (let i = visibleCount; i < visibleCount + 5 && i < items.length; i++) {
 items[i].style.display = 'flex';
 }
 visibleCount += 5;
 
+// すべて表示したらボタンを消す
 if (visibleCount >= items.length) {
 document.getElementById('load-more-wrapper').style.display = 'none';
 }
