@@ -125,7 +125,7 @@ const schema = {
 ))}
 </div>
 
-{recentPosts.length > 10 && (
+{recentPosts.length > 5 && (
 <div id="load-more-wrapper" style="text-align: center; margin-top: 30px;">
 <button id="load-more-btn" class="btn-yellow" style="cursor: pointer; border: none; display: inline-block;">もっと見る</button>
 </div>
@@ -135,7 +135,7 @@ const schema = {
 <script>
 const loadMoreBtn = document.getElementById('load-more-btn');
 if (loadMoreBtn) {
-let visibleCount = 10;
+let visibleCount = 5;
 const items = document.querySelectorAll('.post-item');
 
 loadMoreBtn.addEventListener('click', () => {
