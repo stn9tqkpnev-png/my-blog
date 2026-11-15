@@ -29,7 +29,7 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
       <h2 class="section-title">最新記事一覧</h2>
       <div class="article-grid">
         {posts.map((post, index) => (
-          <article class="article-card post-item" style={}>
+          <article class="article-card post-item" style={`display: ${index < 6 ? "flex" : "none"};`}>
             {post.data.heroImage && (
               <a href={`/blog/${post.id}/`}><Image src={post.data.heroImage} alt={post.data.title} class="article-thumb" /></a>
             )}
@@ -40,8 +40,10 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
           </article>
         ))}
       </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="/blog/" class="btn-yellow" style="background-color: #fff; color: var(--brand-orange); border: 2px solid var(--brand-orange); border-bottom: 4px solid var(--brand-orange);">もっと見る</a>
+      <div id="load-more-wrapper" style="text-align: center; margin-top: 40px;">
+        {posts.length > 6 && (
+          <button id="load-more-btn" class="btn-yellow" style="background-color: #fff; color: var(--brand-orange); border: 2px solid var(--brand-orange); border-bottom: 4px solid var(--brand-orange); cursor: pointer;">もっと見る</button>
+        )}
       </div>
     </main>
     <aside class="sidebar">
