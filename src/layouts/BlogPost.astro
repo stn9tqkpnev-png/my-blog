@@ -113,7 +113,7 @@ const schema = {
 
 <div style="display: flex; flex-direction: column; gap: 20px;">
 {recentPosts.map((post, index) => (
-<a href={} class="post-item" style={}>
+<a href={`/blog/${post.id}/`} class="post-item" style="display: flex; flex-direction: column; background: #fff; border-radius: 10px; text-decoration: none; border: 1px solid #eee; overflow: hidden; margin-bottom: 15px;">
 {post.data.heroImage && (
 <Image src={post.data.heroImage} alt="" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;" loading={index >= 5 ? 'lazy' : 'eager'} />
 )}
@@ -133,22 +133,23 @@ const schema = {
 </section>
 
 <script>
-const loadMoreBtn = document.getElementById('load-more-btn');
-if (loadMoreBtn) {
-const items = document.querySelectorAll('.post-item');
-let visibleCount = 5;
-
-loadMoreBtn.addEventListener('click', () => {
-for (let i = visibleCount; i < visibleCount + 5 && i < items.length; i++) {
-items[i].style.display = 'flex';
-}
-visibleCount += 5;
-
-if (visibleCount >= items.length) {
-document.getElementById('load-more-wrapper').style.display = 'none';
-}
-});
-}
+    const loadMoreBtn = document.getElementById("load-more-btn");
+    if (loadMoreBtn) {
+        const items = document.querySelectorAll(".post-item");
+        let visibleCount = 5;
+        items.forEach((item, index) => {
+            if (index >= 5) item.style.display = "none";
+        });
+        loadMoreBtn.addEventListener("click", () => {
+            for (let i = visibleCount; i < visibleCount + 5 && i < items.length; i++) {
+                items[i].style.display = "flex";
+            }
+            visibleCount += 5;
+            if (visibleCount >= items.length) {
+                document.getElementById("load-more-wrapper").style.display = "none";
+            }
+        });
+    }
 </script>
 
 
