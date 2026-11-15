@@ -111,11 +111,11 @@ const schema = {
 <section style="margin-top: 60px; margin-bottom: 40px;">
 <h2 style="font-size: 20px; border-left: 6px solid var(--brand-orange); padding-left: 10px; margin-bottom: 20px; font-weight: bold;">最新記事一覧</h2>
 
-<div id="post-list-container" style="display: flex; flex-direction: column; gap: 15px;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
 {recentPosts.map((post, index) => (
 <a href={} class="post-item" style={}>
 {post.data.heroImage && (
-<Image src={post.data.heroImage} alt="" style="width: 100px; height: 70px; object-fit: cover; border-radius: 6px; flex-shrink: 0;" loading={index >= 10 ? 'lazy' : 'eager'} />
+<Image src={post.data.heroImage} alt="" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;" loading={index >= 5 ? 'lazy' : 'eager'} />
 )}
 <div style="padding: 15px;">
 <div style="font-size: 16px; font-weight: bold; color: #111; line-height: 1.5; margin-bottom: 8px;">{post.data.title}</div>
@@ -138,19 +138,12 @@ if (loadMoreBtn) {
 const items = document.querySelectorAll('.post-item');
 let visibleCount = 5;
 
-// 初期表示: 5件目以降を非表示にする
-items.forEach((item, index) => {
-if (index >= 5) item.style.display = 'none';
-});
-
-// ボタンクリック時の処理
 loadMoreBtn.addEventListener('click', () => {
 for (let i = visibleCount; i < visibleCount + 5 && i < items.length; i++) {
 items[i].style.display = 'flex';
 }
 visibleCount += 5;
 
-// すべて表示したらボタンを消す
 if (visibleCount >= items.length) {
 document.getElementById('load-more-wrapper').style.display = 'none';
 }
