@@ -9,7 +9,7 @@ import { Image } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 const uniqueTags = [...new Set(allPosts.flatMap(post => post.data.tags || []))];
-const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 10);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <html lang="ja">
 <head>
@@ -28,8 +28,8 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
     <main>
       <h2 class="section-title">最新記事一覧</h2>
       <div class="article-grid">
-        {posts.map((post) => (
-          <article class="article-card">
+        {posts.map((post, index) => (
+          <article class="article-card post-item" style={}>
             {post.data.heroImage && (
               <a href={`/blog/${post.id}/`}><Image src={post.data.heroImage} alt={post.data.title} class="article-thumb" /></a>
             )}
@@ -63,5 +63,25 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
     </aside>
   </div>
   <Footer />
+
+  <script>
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    if (loadMoreBtn) {
+      const items = document.querySelectorAll('.post-item');
+      let visibleCount = 6;
+      
+      loadMoreBtn.addEventListener('click', () => {
+        for (let i = visibleCount; i < visibleCount + 6 && i < items.length; i++) {
+          items[i].style.display = 'flex';
+        }
+        visibleCount += 6;
+        
+        if (visibleCount >= items.length) {
+          document.getElementById('load-more-wrapper').style.display = 'none';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
