@@ -4,12 +4,21 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
 import { Image } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 const uniqueTags = [...new Set(allPosts.flatMap(post => post.data.tags || []))];
 const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDotDate = (d: Date) => {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return ;
+};
+
+const latestPost = posts[0];
+const otherPosts = posts.slice(1);
 ---
 <html lang="ja">
 <head>
@@ -27,37 +36,72 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
   <div class="container">
     <main>
       <h2 class="section-title">最新記事一覧</h2>
-      <div class="article-grid">
-        {posts.map((post, index) => (
-          <article class="article-card post-item" style={`display: ${index < 6 ? "flex" : "none"};`}>
+
+      {latestPost && (
+        <article class="article-card home-hero-card">
+          {latestPost.data.heroImage && (
+            <a href={}>
+              <Image src={latestPost.data.heroImage} alt={latestPost.data.title} class="home-hero-thumb" />
+            </a>
+          )}
+          <div class="article-body" style="padding: 20px;">
+            <div class="home-meta-row">
+              {latestPost.data.tags && latestPost.data.tags[0] && (
+                <span class="home-tag-badge">{latestPost.data.tags[0]}</span>
+              )}
+              <span class="home-date-text">{formatDotDate(latestPost.data.pubDate)}</span>
+              <span class="home-new-badge">NEW</span>
+            </div>
+            <h3 class="article-title" style="font-size: 20px; margin-bottom: 0;">
+              <a href={}>{latestPost.data.title}</a>
+            </h3>
+          </div>
+        </article>
+      )}
+
+      <div class="home-list-stack">
+        {otherPosts.map((post, index) => (
+          <article class="article-card home-row-card post-item" style={}>
             {post.data.heroImage && (
-              <a href={`/blog/${post.id}/`}><Image src={post.data.heroImage} alt={post.data.title} class="article-thumb" /></a>
+              <a href={} class="home-row-thumb-link">
+                <Image src={post.data.heroImage} alt={post.data.title} class="home-row-thumb" />
+              </a>
             )}
-            <div class="article-body">
-              <h3 class="article-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
-              <div class="article-meta"><FormattedDate date={post.data.pubDate} /></div>
+            <div class="home-row-body">
+              <div class="home-meta-row">
+                {post.data.tags && post.data.tags[0] && (
+                  <span class="home-tag-badge">{post.data.tags[0]}</span>
+                )}
+                <span class="home-date-text">{formatDotDate(post.data.pubDate)}</span>
+                {index === 0 && <span class="home-new-badge">NEW</span>}
+              </div>
+              <h3 class="home-row-title">
+                <a href={}>{post.data.title}</a>
+              </h3>
             </div>
           </article>
         ))}
       </div>
+
       <div id="load-more-wrapper" style="text-align: center; margin-top: 40px;">
-        {posts.length > 6 && (
+        {otherPosts.length > 5 && (
           <button id="load-more-btn" class="btn-yellow" style="cursor: pointer; border: none;">もっと見る</button>
         )}
       </div>
     </main>
+
     <aside class="sidebar">
       <div style="background: #fff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 22px; margin-bottom: 24px; border-top: 4px solid var(--brand-orange);">
         <h3 style="font-size: 18px; margin-top: 0; margin-bottom: 12px;">About</h3>
         <p style="font-size: 14px; margin: 0; color: var(--text-sub);">Workbench Note へようこそ！ガジェット、技術、日常の記録を発信するマガジン型ブログです。</p>
       </div>
-      
+
       <div style="background: #fff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 22px; border-top: 4px solid var(--brand-orange);">
         <h3 style="font-size: 18px; margin-top: 0; margin-bottom: 12px;">カテゴリー</h3>
         <ul style="padding-left: 0; margin: 0; font-size: 14px; list-style: none; display: flex; flex-wrap: wrap; gap: 8px;">
           {uniqueTags.map((tag) => (
             <li>
-              <a href={`/tags/${tag}/`} style="display: inline-block; background: var(--tag-bg); color: var(--tag-orange); padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border); font-size: 13px;">#{tag}</a>
+              <a href={} style="display: inline-block; background: var(--tag-bg); color: var(--tag-orange); padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border); font-size: 13px;">#{tag}</a>
             </li>
           ))}
         </ul>
@@ -70,16 +114,17 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
     const loadMoreBtn = document.getElementById('load-more-btn');
     if (loadMoreBtn) {
       const items = document.querySelectorAll('.post-item');
-      let visibleCount = 6;
-      
+      let visibleCount = 5;
+
       loadMoreBtn.addEventListener('click', () => {
-        for (let i = visibleCount; i < visibleCount + 6 && i < items.length; i++) {
-          items[i].style.display = 'flex';
+        for (let i = visibleCount; i < visibleCount + 5 && i < items.length; i++) {
+          (items[i] as HTMLElement).style.display = 'flex';
         }
-        visibleCount += 6;
-        
+        visibleCount += 5;
+
         if (visibleCount >= items.length) {
-          document.getElementById('load-more-wrapper').style.display = 'none';
+          const wrap = document.getElementById('load-more-wrapper');
+          if (wrap) wrap.style.display = 'none';
         }
       });
     }
