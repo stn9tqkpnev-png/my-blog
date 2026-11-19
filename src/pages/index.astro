@@ -14,7 +14,7 @@ const formatDotDate = (d: Date) => {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
-  return ;
+  return `${y}.${m}.${day}`;
 };
 
 const latestPost = posts[0];
@@ -40,7 +40,7 @@ const otherPosts = posts.slice(1);
       {latestPost && (
         <article class="article-card home-hero-card">
           {latestPost.data.heroImage && (
-            <a href={}>
+            <a href={`/blog/${latestPost.id}/`}>
               <Image src={latestPost.data.heroImage} alt={latestPost.data.title} class="home-hero-thumb" />
             </a>
           )}
@@ -53,7 +53,7 @@ const otherPosts = posts.slice(1);
               <span class="home-new-badge">NEW</span>
             </div>
             <h3 class="article-title" style="font-size: 20px; margin-bottom: 0;">
-              <a href={}>{latestPost.data.title}</a>
+              <a href={`/blog/${latestPost.id}/`}>{latestPost.data.title}</a>
             </h3>
           </div>
         </article>
@@ -61,9 +61,9 @@ const otherPosts = posts.slice(1);
 
       <div class="home-list-stack">
         {otherPosts.map((post, index) => (
-          <article class="article-card home-row-card post-item" style={}>
+          <article class="article-card home-row-card post-item" style={`display: ${index < 5 ? 'flex' : 'none'};`}>
             {post.data.heroImage && (
-              <a href={} class="home-row-thumb-link">
+              <a href={`/blog/${post.id}/`} class="home-row-thumb-link">
                 <Image src={post.data.heroImage} alt={post.data.title} class="home-row-thumb" />
               </a>
             )}
@@ -76,7 +76,7 @@ const otherPosts = posts.slice(1);
                 {index === 0 && <span class="home-new-badge">NEW</span>}
               </div>
               <h3 class="home-row-title">
-                <a href={}>{post.data.title}</a>
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
               </h3>
             </div>
           </article>
@@ -101,7 +101,7 @@ const otherPosts = posts.slice(1);
         <ul style="padding-left: 0; margin: 0; font-size: 14px; list-style: none; display: flex; flex-wrap: wrap; gap: 8px;">
           {uniqueTags.map((tag) => (
             <li>
-              <a href={} style="display: inline-block; background: var(--tag-bg); color: var(--tag-orange); padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border); font-size: 13px;">#{tag}</a>
+              <a href={`/tags/${tag}/`} style="display: inline-block; background: var(--tag-bg); color: var(--tag-orange); padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border); font-size: 13px;">#{tag}</a>
             </li>
           ))}
         </ul>
