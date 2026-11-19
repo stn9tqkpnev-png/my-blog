@@ -30,43 +30,69 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
       <div class="article-list">
         {posts.map((post, index) => (
           index === 0 ? (
-            <article class="article-card featured-post" style="flex-direction: row; align-items: stretch; margin-bottom: 32px;">
-              <div class="article-body" style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: center;">
-                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+            <a href={`/blog/${post.id}/`} class="featured-card">
+              <div class="featured-content">
+                <div class="tag-list">
                   {post.data.tags && post.data.tags.map((tag) => (
-                    <span style="background: #eef0f4; padding: 4px 10px; border-radius: 99px; font-size: 12px; color: #14213D; font-weight: 600;">#{tag}</span>
+                    <span class="tag">#{tag}</span>
                   ))}
                 </div>
-                <h3 class="article-title" style="font-size: 24px; margin-bottom: 8px;"><a href={}>{post.data.title}</a></h3>
-                <div class="article-meta" style="margin-bottom: 0;"><FormattedDate date={post.data.pubDate} /></div>
+                <h3 class="featured-title">{post.data.title}</h3>
+                <div class="meta"><FormattedDate date={post.data.pubDate} /></div>
               </div>
               {post.data.heroImage && (
-                <a href={} style="width: 45%; flex-shrink: 0;">
-                  <Image src={post.data.heroImage} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
-                </a>
+                <div class="featured-image">
+                  <Image src={post.data.heroImage} alt="" />
+                </div>
               )}
-            </article>
+            </a>
           ) : (
-            <article class="article-card list-post" style="flex-direction: row; align-items: center; margin-bottom: 16px;">
+            <a href={`/blog/${post.id}/`} class="list-card">
               {post.data.heroImage && (
-                <a href={} style="width: 160px; flex-shrink: 0;">
-                  <Image src={post.data.heroImage} alt="" style="width: 100%; height: 100px; object-fit: cover;" />
-                </a>
+                <div class="list-image">
+                  <Image src={post.data.heroImage} alt="" />
+                </div>
               )}
-              <div class="article-body" style="flex: 1; padding: 16px;">
-                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <div class="list-content">
+                <div class="tag-list">
                   {post.data.tags && post.data.tags.slice(0, 3).map((tag) => (
-                    <span style="background: #eef0f4; padding: 2px 8px; border-radius: 99px; font-size: 11px; color: #14213D; font-weight: 600;">#{tag}</span>
+                    <span class="tag">#{tag}</span>
                   ))}
                 </div>
-                <h3 class="article-title" style="font-size: 16px; margin-bottom: 4px;"><a href={}>{post.data.title}</a></h3>
-                <div class="article-meta"><FormattedDate date={post.data.pubDate} /></div>
+                <h3 class="list-title">{post.data.title}</h3>
+                <div class="meta"><FormattedDate date={post.data.pubDate} /></div>
               </div>
-            </article>
+            </a>
           )
         ))}
       </div>
     </main>
+
+    <style>
+      .featured-card, .list-card { background: #fff; border-radius: 14px; border-bottom: 4px solid var(--yellow); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-decoration: none; color: inherit; display: flex; }
+      .featured-card { flex-direction: row; margin-bottom: 24px; }
+      .featured-content { flex: 1; padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+      .featured-image { width: 45%; flex-shrink: 0; display: block; }
+      .featured-image img { width: 100%; height: 100%; object-fit: cover; }
+      .featured-title { font-size: 24px; font-weight: bold; margin: 0 0 16px 0; line-height: 1.4; }
+      
+      .list-card { flex-direction: row; margin-bottom: 16px; align-items: center; }
+      .list-image { width: 200px; flex-shrink: 0; display: block; }
+      .list-image img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9; }
+      .list-content { flex: 1; padding: 20px; }
+      .list-title { font-size: 16px; font-weight: bold; margin: 0 0 8px 0; line-height: 1.5; }
+
+      .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+      .tag { display: inline-block; background: #eef0f4; padding: 4px 10px; border-radius: 99px; font-size: 12px; color: #14213D; font-weight: 600; white-space: nowrap; }
+      .meta { font-size: 13px; color: #666; }
+
+      @media (max-width: 768px) {
+        .featured-card { flex-direction: column; }
+        .featured-image { width: 100%; aspect-ratio: 16/9; }
+        .list-card { flex-direction: column; align-items: stretch; }
+        .list-image { width: 100%; aspect-ratio: 16/9; }
+      }
+    </style>
     <aside class="sidebar">
       <div style="background: #fff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 22px; margin-bottom: 24px; border-top: 4px solid var(--brand-orange);">
         <h3 style="font-size: 18px; margin-top: 0; margin-bottom: 12px;">About</h3>
