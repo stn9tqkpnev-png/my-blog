@@ -27,23 +27,44 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
   <div class="container">
     <main>
       <h2 class="section-title">最新記事一覧</h2>
-      <div class="article-grid">
+      <div class="article-list">
         {posts.map((post, index) => (
-          <article class="article-card post-item" style={`display: ${index < 6 ? "flex" : "none"};`}>
-            {post.data.heroImage && (
-              <a href={`/blog/${post.id}/`}><Image src={post.data.heroImage} alt={post.data.title} class="article-thumb" /></a>
-            )}
-            <div class="article-body">
-              <h3 class="article-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
-              <div class="article-meta"><FormattedDate date={post.data.pubDate} /></div>
-            </div>
-          </article>
+          index === 0 ? (
+            <article class="article-card featured-post" style="flex-direction: row; align-items: stretch; margin-bottom: 32px;">
+              <div class="article-body" style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                  {post.data.tags && post.data.tags.map((tag) => (
+                    <span style="background: #eef0f4; padding: 4px 10px; border-radius: 99px; font-size: 12px; color: #14213D; font-weight: 600;">#{tag}</span>
+                  ))}
+                </div>
+                <h3 class="article-title" style="font-size: 24px; margin-bottom: 8px;"><a href={}>{post.data.title}</a></h3>
+                <div class="article-meta" style="margin-bottom: 0;"><FormattedDate date={post.data.pubDate} /></div>
+              </div>
+              {post.data.heroImage && (
+                <a href={} style="width: 45%; flex-shrink: 0;">
+                  <Image src={post.data.heroImage} alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+                </a>
+              )}
+            </article>
+          ) : (
+            <article class="article-card list-post" style="flex-direction: row; align-items: center; margin-bottom: 16px;">
+              {post.data.heroImage && (
+                <a href={} style="width: 160px; flex-shrink: 0;">
+                  <Image src={post.data.heroImage} alt="" style="width: 100%; height: 100px; object-fit: cover;" />
+                </a>
+              )}
+              <div class="article-body" style="flex: 1; padding: 16px;">
+                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                  {post.data.tags && post.data.tags.slice(0, 3).map((tag) => (
+                    <span style="background: #eef0f4; padding: 2px 8px; border-radius: 99px; font-size: 11px; color: #14213D; font-weight: 600;">#{tag}</span>
+                  ))}
+                </div>
+                <h3 class="article-title" style="font-size: 16px; margin-bottom: 4px;"><a href={}>{post.data.title}</a></h3>
+                <div class="article-meta"><FormattedDate date={post.data.pubDate} /></div>
+              </div>
+            </article>
+          )
         ))}
-      </div>
-      <div id="load-more-wrapper" style="text-align: center; margin-top: 40px;">
-        {posts.length > 6 && (
-          <button id="load-more-btn" class="btn-yellow" style="cursor: pointer; border: none;">もっと見る</button>
-        )}
       </div>
     </main>
     <aside class="sidebar">
