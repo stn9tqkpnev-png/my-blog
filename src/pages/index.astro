@@ -43,6 +43,9 @@ const items = posts.map((p) => ({
 }));
 const featured = items[0];
 const rest = items.slice(1);
+
+// 簡易カテゴリのユニーク一覧（カードのチップと同じもの）
+const categoryList = [...new Set(items.map((it) => it.cat.name))];
 ---
 <html lang="ja">
 <head>
@@ -106,8 +109,8 @@ const rest = items.slice(1);
       <div class="wn-box">
         <h3 class="wn-box-title">カテゴリー</h3>
         <ul class="wn-tags">
-          {tagList.map((tag) => (
-            <li><a href={"/tags/" + tag + "/"}>{"#" + tag}</a></li>
+          {categoryList.map((cat) => (
+            <li><span class="wn-cat-label">{cat}</span></li>
           ))}
         </ul>
       </div>
@@ -152,6 +155,14 @@ const rest = items.slice(1);
     @media (min-width: 640px) {
       .wn-feature-title { font-size: 24px; }
       .wn-row-title { font-size: 17px; }
+    }
+    .wn-cat-label {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-orange);
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 13px;
     }
   </style>
   <script>
