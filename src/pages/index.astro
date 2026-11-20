@@ -109,9 +109,18 @@ const categoryList = [...new Set(items.map((it) => it.cat.name))];
       <div class="wn-box">
         <h3 class="wn-box-title">カテゴリー</h3>
         <ul class="wn-tags">
-          {categoryList.map((cat) => (
-            <li><span class="wn-cat-label">{cat}</span></li>
-          ))}
+          {categoryList.map((cat) => {
+            const linkMap = {
+              "スマートウォッチ": "/tags/Amazfit/",
+              "スマートホーム": "/tags/SESAME/",
+              "アプリ": "/tags/Androidアプリ/",
+              "買い物": "/tags/AliExpress/",
+            };
+            const href = linkMap[cat] || ("/tags/" + cat + "/");
+            return (
+              <li><a href={href} class="wn-cat-label">{cat}</a></li>
+            );
+          })}
         </ul>
       </div>
     </aside>
@@ -163,6 +172,10 @@ const categoryList = [...new Set(items.map((it) => it.cat.name))];
       padding: 4px 12px;
       border-radius: 99px;
       font-size: 13px;
+      text-decoration: none;
+    }
+    .wn-cat-label:hover {
+      opacity: 0.85;
     }
   </style>
   <script>
