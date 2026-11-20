@@ -109,18 +109,9 @@ const categoryList = [...new Set(items.map((it) => it.cat.name))];
       <div class="wn-box">
         <h3 class="wn-box-title">カテゴリー</h3>
         <ul class="wn-tags">
-          {categoryList.map((cat) => {
-            const linkMap = {
-              "スマートウォッチ": "/tags/Amazfit/",
-              "スマートホーム": "/tags/SESAME/",
-              "アプリ": "/tags/Androidアプリ/",
-              "買い物": "/tags/AliExpress/",
-            };
-            const href = linkMap[cat] || ("/tags/" + cat + "/");
-            return (
-              <li><a href={href} class="wn-cat-label">{cat}</a></li>
-            );
-          })}
+          {categoryList.map((cat) => (
+            <li><a href={`/category/${encodeURIComponent(cat)}/`} class="wn-cat-label">{cat}</a></li>
+          ))}
         </ul>
       </div>
     </aside>

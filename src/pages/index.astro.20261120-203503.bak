@@ -1,0 +1,197 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const allPosts = await getCollection("blog");
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tagCount: Record<string, number> = {};
+posts.forEach((p) => {
+  (p.data.tags || []).forEach((t) => {
+    tagCount[t] = (tagCount[t] || 0) + 1;
+  });
+});
+const tagList = Object.keys(tagCount).sort((a, b) => tagCount[b] - tagCount[a]);
+
+function categoryOf(tags: string[] | undefined) {
+  const t = tags || [];
+  if (t.includes("Amazfit") || t.includes("T-Rex 2") || t.includes("スマートウォッチ")) return { name: "スマートウォッチ", cls: "amz" };
+  if (t.includes("SESAME") || t.includes("スマートホーム")) return { name: "スマートホーム", cls: "ses" };
+  if (t.includes("AliExpress") || t.includes("買い物")) return { name: "買い物", cls: "shop" };
+  if (t.includes("Androidアプリ") || t.includes("音声入力") || t.includes("アプリ")) return { name: "アプリ", cls: "app" };
+  return { name: t[0] || "ブログ", cls: "etc" };
+}
+
+function fmtDate(d: Date) {
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "." + m + "." + day;
+}
+
+const now = Date.now();
+const items = posts.map((p) => ({
+  id: p.id,
+  title: p.data.title,
+  hero: p.data.heroImage,
+  dateText: fmtDate(p.data.pubDate),
+  isNew: now - p.data.pubDate.valueOf() < 8 * 24 * 60 * 60 * 1000,
+  cat: categoryOf(p.data.tags),
+}));
+const featured = items[0];
+const rest = items.slice(1);
+
+// 簡易カテゴリのユニーク一覧（カードのチップと同じもの）
+const categoryList = [...new Set(items.map((it) => it.cat.name))];
+---
+<html lang="ja">
+<head>
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+  <Header />
+  <section style="background-color: var(--navy); color: #fff; padding: 60px 24px; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <span style="display: inline-block; background-color: var(--yellow); color: var(--navy); font-weight: bold; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 20px; font-family: Poppins, sans-serif;">リアルな使用感をお届け</span>
+      <h1 style="font-size: 32px; font-weight: bold; line-height: 1.5; margin-bottom: 20px; font-family: Noto Sans JP, sans-serif;">毎日をちょっと便利に、<br>もっと快適に。</h1>
+      <p style="font-size: 15px; color: #ccc; margin-bottom: 30px;">ガジェットからスマートホームまで。実際に生活に取り入れて分かった本音のレビューと活用術。</p>
+    </div>
+  </section>
+  <div class="container">
+    <main class="wn-main">
+      <h2 class="section-title">最新記事一覧</h2>
+      {featured && (
+        <article class="wn-item wn-feature">
+          <a class="wn-feature-img" href={"/blog/" + featured.id + "/"}>
+            {featured.hero && <Image src={featured.hero} alt={featured.title} />}
+            {featured.isNew && <span class="wn-new wn-new-img">NEW</span>}
+          </a>
+          <div class="wn-feature-body">
+            <div class="wn-meta">
+              <span class={"wn-chip wn-" + featured.cat.cls}>{featured.cat.name}</span>
+              <span class="wn-date">{featured.dateText}</span>
+            </div>
+            <h3 class="wn-feature-title"><a href={"/blog/" + featured.id + "/"}>{featured.title}</a></h3>
+          </div>
+        </article>
+      )}
+      {rest.map((it, i) => (
+        <article class={"wn-item wn-row" + (i < 5 ? "" : " wn-hidden")}>
+          <div class="wn-row-left">
+            <div class="wn-meta-under">
+              <span class={"wn-chip wn-" + it.cat.cls}>{it.cat.name}</span>
+            </div>
+            <a class="wn-row-img" href={"/blog/" + it.id + "/"}>
+              {it.hero && <Image src={it.hero} alt={it.title} />}
+              {it.isNew && <span class="wn-new wn-new-img">NEW</span>}
+            </a>
+          </div>
+          <div class="wn-row-body">
+            <div class="wn-date">{it.dateText}</div>
+            <h3 class="wn-row-title"><a href={"/blog/" + it.id + "/"}>{it.title}</a></h3>
+          </div>
+        </article>
+      ))}
+      {rest.length > 5 && (
+        <div id="wn-more-wrap" class="wn-more">
+          <button id="wn-more-btn" class="btn-yellow" type="button" style="cursor: pointer; border: none;">もっと見る</button>
+        </div>
+      )}
+    </main>
+    <aside class="sidebar">
+      <div class="wn-box">
+        <h3 class="wn-box-title">About</h3>
+        <p class="wn-about">Workbench Note へようこそ！ガジェット、技術、日常の記録を発信するマガジン型ブログです。</p>
+      </div>
+      <div class="wn-box">
+        <h3 class="wn-box-title">カテゴリー</h3>
+        <ul class="wn-tags">
+          {categoryList.map((cat) => {
+            const linkMap = {
+              "スマートウォッチ": "/tags/Amazfit/",
+              "スマートホーム": "/tags/SESAME/",
+              "アプリ": "/tags/Androidアプリ/",
+              "買い物": "/tags/AliExpress/",
+            };
+            const href = linkMap[cat] || ("/tags/" + cat + "/");
+            return (
+              <li><a href={href} class="wn-cat-label">{cat}</a></li>
+            );
+          })}
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <Footer />
+  <style is:global>
+    .wn-main { min-width: 0; }
+    .wn-item { background: #fff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-bottom: 4px solid var(--yellow); overflow: hidden; margin-bottom: 18px; }
+    .wn-feature-img { display: block; position: relative; }
+    .wn-feature-img img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; }
+    .wn-feature-body { padding: 16px 18px 20px; }
+    .wn-feature-title { font-size: 19px; line-height: 1.5; margin: 8px 0 0; font-weight: 700; }
+    .wn-row { display: flex; gap: 14px; padding: 14px; align-items: flex-start; }
+    .wn-row-left { flex: 0 0 38%; max-width: 250px; display: flex; flex-direction: column; gap: 6px; }
+    .wn-row-img { display: block; position: relative; width: 100%; }
+    .wn-row-img img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 8px; }
+    .wn-row-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start; gap: 4px; }
+    .wn-row-title { font-size: 15px; line-height: 1.5; margin: 0; font-weight: 700; }
+    .wn-meta-under { display: flex; flex-wrap: wrap; gap: 6px; }
+    .wn-row .wn-date { margin: 0; font-size: 12px; color: var(--text-sub); }
+    .wn-feature-title a, .wn-feature-title a:visited, .wn-row-title a, .wn-row-title a:visited { color: #14213D; text-decoration: none; }
+    .wn-feature-title a:hover, .wn-row-title a:hover { color: #E8480C; }
+    .wn-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .wn-chip { font-size: 12px; font-weight: 700; padding: 1px 10px; border-radius: 999px; line-height: 1.7; }
+    .wn-app { background: #E1F5EE; color: #085041; }
+    .wn-shop { background: #FAEEDA; color: #633806; }
+    .wn-amz { background: #E6F1FB; color: #0C447C; }
+    .wn-ses { background: #EEEDFE; color: #3C3489; }
+    .wn-etc { background: #F1EFE8; color: #444441; }
+    .wn-date { font-size: 12px; color: var(--text-sub); }
+    .wn-new { font-size: 11px; font-weight: 700; color: #fff; background: #E8480C; padding: 1px 8px; border-radius: 999px; line-height: 1.7; }
+    .wn-new-img { position: absolute; top: 6px; left: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.35); }
+    .wn-feature-img .wn-new-img { top: 12px; left: auto; right: 12px; font-size: 12px; padding: 2px 10px; }
+    .wn-hidden { display: none; }
+    .wn-more { text-align: center; margin-top: 24px; }
+    .wn-box { background: #fff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 22px; margin-bottom: 24px; border-top: 4px solid var(--brand-orange); }
+    .wn-box-title { font-size: 18px; margin: 0 0 12px; }
+    .wn-about { font-size: 14px; margin: 0; color: var(--text-sub); }
+    .wn-tags { padding-left: 0; margin: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .wn-tags a { display: inline-block; background: var(--tag-bg); color: var(--tag-orange); padding: 4px 12px; border-radius: 99px; font-size: 13px; }
+    @media (min-width: 640px) {
+      .wn-feature-title { font-size: 24px; }
+      .wn-row-title { font-size: 17px; }
+    }
+    .wn-cat-label {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-orange);
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .wn-cat-label:hover {
+      opacity: 0.85;
+    }
+  </style>
+  <script>
+    const moreBtn = document.getElementById("wn-more-btn");
+    if (moreBtn) {
+      moreBtn.addEventListener("click", () => {
+        const hidden = document.querySelectorAll(".wn-row.wn-hidden");
+        for (let i = 0; i < hidden.length && i < 5; i++) {
+          hidden[i].classList.remove("wn-hidden");
+        }
+        if (document.querySelectorAll(".wn-row.wn-hidden").length === 0) {
+          const wrap = document.getElementById("wn-more-wrap");
+          if (wrap) wrap.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
