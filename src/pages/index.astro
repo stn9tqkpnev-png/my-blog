@@ -19,10 +19,10 @@ const tagList = Object.keys(tagCount).sort((a, b) => tagCount[b] - tagCount[a]);
 
 function categoryOf(tags: string[] | undefined) {
   const t = tags || [];
-  if (t.includes("Amazfit") || t.includes("T-Rex 2")) return { name: "Amazfit", cls: "amz" };
-  if (t.includes("SESAME")) return { name: "SESAME", cls: "ses" };
-  if (t.includes("AliExpress")) return { name: "買い物", cls: "shop" };
-  if (t.includes("Androidアプリ") || t.includes("音声入力")) return { name: "Androidアプリ", cls: "app" };
+  if (t.includes("Amazfit") || t.includes("T-Rex 2") || t.includes("スマートウォッチ")) return { name: "スマートウォッチ", cls: "amz" };
+  if (t.includes("SESAME") || t.includes("スマートホーム")) return { name: "スマートホーム", cls: "ses" };
+  if (t.includes("AliExpress") || t.includes("買い物")) return { name: "買い物", cls: "shop" };
+  if (t.includes("Androidアプリ") || t.includes("音声入力") || t.includes("アプリ")) return { name: "アプリ", cls: "app" };
   return { name: t[0] || "ブログ", cls: "etc" };
 }
 
