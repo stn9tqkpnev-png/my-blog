@@ -1,0 +1,97 @@
+=== Mon Nov 23 06:06:54 JST 2026 ===
+✓ 追記処理が完了しました。
+diff --git a/src/content/blog/sesame-watch-unlock.mdx b/src/content/blog/sesame-watch-unlock.mdx
+index 51dde49..723f884 100644
+--- a/src/content/blog/sesame-watch-unlock.mdx
++++ b/src/content/blog/sesame-watch-unlock.mdx
+@@ -296,6 +296,8 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1
+ 
+ 時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME 5 を腕時計から操作できました。使う前に、漏えいしたときの対応手順を決めておくことをおすすめします。
+ 
++<SupportMessage />
++
+ <div style="margin: 40px 0; text-align: center; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+   <div style="flex: 1; min-width: 250px;">
+     <AffiliateCard url="https://www.amazon.co.jp/dp/B09GVSC3CK/ref=cm_sw_r_as_gl_apa_gl_i_1AE38G9WRHAY3DX7F1B4?linkCode=ml1&tag=workbenchnote-22&linkId=b6ba8ac30d9fcd0f5672189495749dd1" image="/images/sesame-mid-card.avif" title="SESAME用 交換電池（CR123A）" />
+=== ビルド開始 ===
+
+> my-blog@0.0.1 build
+> astro build
+
+06:06:59 [content] Syncing content
+06:06:59 [content] Synced content
+06:06:59 [types] Generated 1.13s
+06:06:59 [build] output: "static"
+06:06:59 [build] mode: "static"
+06:06:59 [build] directory: /data/data/com.termux/files/home/my-blog/dist/
+06:06:59 [build] Collecting build info...
+06:06:59 [build] ✓ Completed in 1.22s.
+06:06:59 [build] Building static entrypoints...
+06:07:00 [assets] Copying fonts (2 files)...
+06:07:01 [vite] ✓ built in 1.61s
+06:07:01 [vite] ✓ built in 114ms
+06:07:01 [build] Rearranging server assets...
+
+ generating static routes 
+06:07:01   ├─ /blog/index.html (+41ms) 
+06:07:01   ├─ /blog/aliexpress-review/index.html (+29ms) 
+06:07:01   ├─ /blog/aliexpress-sink-goods/index.html (+16ms) 
+06:07:01   ├─ /blog/amazfit-trex2-bumper/index.html (+15ms) 
+06:07:01   ├─ /blog/g10s-pro-bt-review/index.html (+16ms) 
+06:07:01   ├─ /blog/sesame-watch-unlock/index.html (+49ms) 
+06:07:01   ├─ /blog/sesame5-3years-review/index.html (+11ms) 
+06:07:01   ├─ /blog/trex2-band-review/index.html (+9ms) 
+06:07:01   ├─ /blog/trex2-protective-film/index.html (+12ms) 
+06:07:01   ├─ /blog/trex2-review/index.html (+13ms) 
+06:07:01   ├─ /blog/wispr-flow-gboard/index.html (+12ms) 
+06:07:01   ├─ /category/アプリ/index.html (+3ms) 
+06:07:01   ├─ /category/スマートウォッチ/index.html (+1ms) 
+06:07:01   ├─ /category/スマートホーム/index.html (+1ms) 
+06:07:01   ├─ /category/買い物/index.html (+1ms) 
+06:07:01   ├─ /category/smartwatch/index.html (+5ms) 
+06:07:01   ├─ /category/smarthome/index.html (+3ms) 
+06:07:01   ├─ /category/app/index.html (+3ms) 
+06:07:01   ├─ /category/shopping/index.html (+3ms) 
+06:07:01   ├─ /contact/index.html (+4ms) 
+06:07:01   ├─ /disclaimer/index.html (+4ms) 
+06:07:01   ├─ /privacy/index.html (+4ms) 
+06:07:01   ├─ /profile/index.html (+4ms) 
+06:07:01   ├─ /rss.xml (+93ms) 
+06:07:01   ├─ /sitemap/index.html (+4ms) 
+06:07:01   ├─ /tags/AliExpress/index.html (+4ms) 
+06:07:01   ├─ /tags/ガジェット/index.html (+3ms) 
+06:07:01   ├─ /tags/買い物/index.html (+2ms) 
+06:07:01   ├─ /tags/Amazfit/index.html (+2ms) 
+06:07:01   ├─ /tags/SESAME/index.html (+3ms) 
+06:07:01   ├─ /tags/スマートウォッチ/index.html (+3ms) 
+06:07:01   ├─ /tags/Androidアプリ/index.html (+3ms) 
+06:07:01   ├─ /tags/スマートホーム/index.html (+3ms) 
+06:07:01   ├─ /tags/レビュー/index.html (+4ms) 
+06:07:01   ├─ /tags/T-Rex 2/index.html (+4ms) 
+06:07:01   ├─ /tags/音声入力/index.html (+3ms) 
+06:07:01   ├─ /tags/index.html (+6ms) 
+06:07:01   ├─ /index.html (+7ms) 
+06:07:01 ✓ Completed in 473ms.
+
+ generating optimized images 
+06:07:02   ▶ /_astro/aliexpress-hero.BUWDVMJO_2eTUYn.svg (reused cache entry) (+6ms) (1/14)
+06:07:02   ▶ /_astro/wispr-flow-gboard-hero.CWjlj0S9_2mSedt.webp (reused cache entry) (+5ms) (2/14)
+06:07:02   ▶ /_astro/g10s-pro-bt-hero.LHFDE4py_Z27ju8j.webp (reused cache entry) (+6ms) (3/14)
+06:07:02   ▶ /_astro/trex2-film-hero.DOWQjqqv_2tPyPG.webp (reused cache entry) (+6ms) (4/14)
+06:07:02   ▶ /_astro/trex2-band-hero.C1OP0Fq9_w0FDq.webp (reused cache entry) (+7ms) (5/14)
+06:07:02   ▶ /_astro/sink-hero.CpB53Xnt_wWjy.webp (reused cache entry) (+7ms) (6/14)
+06:07:02   ▶ /_astro/hero-watch-lock-unlock.C9xCvSAG_Z1FbUX4.webp (reused cache entry) (+3ms) (7/14)
+06:07:02   ▶ /_astro/trex2-review-hero.CQySdtBB_26A1v4.webp (reused cache entry) (+4ms) (8/14)
+06:07:02   ▶ /_astro/sesame5-hero-whole.Bp2vI_yQ_ZaFbcl.webp (reused cache entry) (+4ms) (9/14)
+06:07:02   ▶ /_astro/wrist1.EWzueInT_bnrJ4.webp (reused cache entry) (+4ms) (10/14)
+06:07:02   ▶ /_astro/wrist2.myu1NreD_DbtMe.webp (reused cache entry) (+3ms) (11/14)
+06:07:02   ▶ /_astro/trex2-bumper-1.BwDi9khd_Znbgf1.webp (reused cache entry) (+3ms) (12/14)
+06:07:02   ▶ /_astro/side1.CK1MCemO_2nSDFa.webp (reused cache entry) (+3ms) (13/14)
+06:07:02   ▶ /_astro/side2.DG0ZbXvN_HQBly.webp (reused cache entry) (+3ms) (14/14)
+06:07:02 ✓ Completed in 16ms.
+
+06:07:02 [build] ✓ Completed in 2.48s.
+06:07:02 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+06:07:02 [build] 33 page(s) built in 3.73s
+06:07:02 [build] Complete!
+=== ビルド成功。プッシュします ===
