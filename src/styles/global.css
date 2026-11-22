@@ -23,7 +23,7 @@ img{max-width:100%;height:auto}
 .article-title{font-size:16px;font-weight:700;margin:0 0 8px 0;color:var(--navy);line-height:1.5}
 .article-meta{font-size:12px;color:var(--text-sub);margin-bottom:8px}
 .article-description{font-size:14px;color:var(--text-sub);display:none}
-.btn-yellow{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:700;padding:13px 26px;border-radius:10px;border-bottom:4px solid var(--yellow-dark);text-align:center;font-family:'Poppins',sans-serif}
+.btn-yellow{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:700;padding:13px 26px;border-radius:10px;border-bottom:4px solid var(--yellow-dark);text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.2);font-family:'Poppins',sans-serif}
 .section-title{font-size:24px;font-weight:700;border-left:8px solid var(--brand-orange);padding-left:12px;margin-bottom:24px;color:var(--navy)}
 .pr-notice{background:var(--tag-bg);border-left:6px solid var(--brand-orange);padding:8px 16px;font-size:13px;color:var(--tag-orange);margin-bottom:24px}
 .prose h2{font-size:24px;border-left:8px solid var(--brand-orange);padding-left:12px;margin-top:40px;margin-bottom:20px}
