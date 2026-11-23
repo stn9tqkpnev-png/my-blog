@@ -1,0 +1,76 @@
+name: Remove Black Friday Card
+on:
+  schedule:
+    - cron: '5 15 7 12 *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Run removal even before 2026-12-08'
+        type: boolean
+        default: false
+permissions:
+  contents: write
+jobs:
+  remove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove card from articles
+        env:
+          FORCE: ${{ inputs.force }}
+        run: |
+          python3 - <<'PY'
+          import pathlib, os, sys, datetime
+          tz = datetime.timezone(datetime.timedelta(hours=9))
+          now = datetime.datetime.now(tz)
+          force = os.environ.get('FORCE') == 'true'
+          print('now JST:', now.isoformat(), 'force:', force)
+          if not force and now < datetime.datetime(2026, 12, 8, 0, 5, tzinfo=tz):
+              print('Too early, skip')
+              sys.exit(0)
+          targets = ['amazfit-trex2-bumper', 'g10s-pro-bt-review', 'sesame-watch-unlock', 'sesame5-3years-review', 'trex2-band-review', 'trex2-protective-film', 'trex2-review', 'wispr-flow-gboard']
+          for t in targets:
+              p = pathlib.Path('src/content/blog/' + t + '.mdx')
+              lines = p.read_text(encoding='utf-8').split('\n')
+              hits = [i for i, l in enumerate(lines) if 'amazon-blackfriday-2026.jpg' in l]
+              if not hits:
+                  print(t, ': no card')
+                  continue
+              i = hits[0]
+              s = i
+              while not lines[s].startswith('<AffiliateCard'):
+                  s -= 1
+              e = i
+              while lines[e].strip() != '/>':
+                  e += 1
+              del lines[s:e + 1]
+              if 0 < s < len(lines) and lines[s] == '' and lines[s - 1] == '':
+                  del lines[s]
+              txt = '\n'.join(lines)
+              assert 'blackfriday' not in txt, t
+              p.write_text(txt, encoding='utf-8')
+              print(t, ': removed')
+          img = pathlib.Path('public/images/amazon-blackfriday-2026.jpg')
+          if img.exists():
+              img.unlink()
+              print('image deleted')
+          comp = pathlib.Path('src/components/AffiliateCard.astro')
+          t = comp.read_text(encoding='utf-8')
+          t2 = t.replace(' data-hide-after={hideAfter}', '')
+          kept = [l for l in t2.split('\n') if not l.startswith('const hideAfter') and 'hideAfter &&' not in l]
+          t2 = '\n'.join(kept)
+          if t2 != t:
+              comp.write_text(t2, encoding='utf-8')
+              print('component reverted')
+          PY
+      - name: Commit and push
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "ブラックフライデーのカードを自動取り外し"
+            git push
+          else
+            echo "No changes"
+          fi
