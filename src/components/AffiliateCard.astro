@@ -6,8 +6,9 @@ interface Props {
   buttonText?: string;
 }
 const { url, image, title, buttonText = "Amazonで見る ▶" } = Astro.props;
+const hideAfter = url.includes('blackfriday') ? '2026-12-08T00:00:00+09:00' : null;
 ---
-<div class="affiliate-box">
+<div class="affiliate-box" data-hide-after={hideAfter}>
   <span class="pr-badge">PR</span>
   <a href={url} target="_blank" rel="sponsored noopener" style="text-decoration: none; display: block;">
     <img src={image} alt={title} style="max-width: 120px; height: auto; border-radius: 8px; margin-bottom: 15px; display: inline-block;">
@@ -15,3 +16,4 @@ const { url, image, title, buttonText = "Amazonで見る ▶" } = Astro.props;
     <div class="btn-affiliate">{buttonText}</div>
   </a>
 </div>
+{hideAfter && <script is:inline>document.querySelectorAll('[data-hide-after]').forEach(function(el){if(Date.now()>new Date(el.getAttribute('data-hide-after')).getTime()){el.remove();}});</script>}
