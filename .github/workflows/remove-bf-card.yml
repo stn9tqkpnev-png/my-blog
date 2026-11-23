@@ -28,7 +28,7 @@ jobs:
           if not force and now < datetime.datetime(2026, 12, 8, 0, 5, tzinfo=tz):
               print('Too early, skip')
               sys.exit(0)
-          targets = ['amazfit-trex2-bumper', 'g10s-pro-bt-review', 'sesame-watch-unlock', 'sesame5-3years-review', 'trex2-band-review', 'trex2-protective-film', 'trex2-review', 'wispr-flow-gboard']
+          targets = ['amazfit-trex2-bumper', 'g10s-pro-bt-review', 'sesame-watch-unlock', 'sesame5-3years-review', 'trex2-band-review', 'trex2-protective-film', 'trex2-review', 'wispr-flow-gboard', 'aliexpress-review', 'aliexpress-sink-goods']
           for t in targets:
               p = pathlib.Path('src/content/blog/' + t + '.mdx')
               lines = p.read_text(encoding='utf-8').split('\n')
