@@ -4,10 +4,19 @@ interface Props {
   image: string;
   title: string;
   buttonText?: string;
+  banner?: boolean;
 }
-const { url, image, title, buttonText = "Amazonで見る ▶" } = Astro.props;
+const { url, image, title, buttonText = "Amazonで見る ▶", banner = false } = Astro.props;
 const hideAfter = url.includes('blackfriday') ? '2026-12-08T00:00:00+09:00' : null;
 ---
+{banner ? (
+<div class="banner-box" data-hide-after={hideAfter} style="position: relative; margin: 24px 0;">
+  <span class="pr-badge" style="position: absolute; top: 8px; right: 8px; z-index: 1;">PR</span>
+  <a href={url} target="_blank" rel="sponsored noopener" style="display: block;">
+    <img src={image} alt={title} style="width: 100%; height: auto; border-radius: 8px; display: block;">
+  </a>
+</div>
+) : (
 <div class="affiliate-box" data-hide-after={hideAfter}>
   <span class="pr-badge">PR</span>
   <a href={url} target="_blank" rel="sponsored noopener" style="text-decoration: none; display: block;">
@@ -16,4 +25,5 @@ const hideAfter = url.includes('blackfriday') ? '2026-12-08T00:00:00+09:00' : nu
     <div class="btn-affiliate">{buttonText}</div>
   </a>
 </div>
+)}
 {hideAfter && <script is:inline>document.querySelectorAll('[data-hide-after]').forEach(function(el){if(Date.now()>new Date(el.getAttribute('data-hide-after')).getTime()){el.remove();}});</script>}
