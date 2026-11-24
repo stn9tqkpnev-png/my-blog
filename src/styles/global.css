@@ -13,9 +13,9 @@ img{max-width:100%;height:auto}
 .site-footer{background:var(--navy);color:#fff;padding:40px 24px;text-align:center;margin-top:60px}
 .site-footer a{color:#fff;margin:0 10px;font-size:14px}
 .footer-copy{margin-top:20px;font-size:12px;color:#aaa}
-.container{max-width:1120px;margin:40px auto;padding:0 24px;display:grid;grid-template-columns:1fr;gap:40px}
+.container{max-width:1120px;margin:40px auto;padding:0 8px;display:grid;grid-template-columns:1fr;gap:40px}
 @media(min-width:820px){.container{grid-template-columns:1fr 300px}}
-.container-1col{max-width:900px;margin:40px auto;padding:0 24px}
+.container-1col{max-width:900px;margin:40px auto;padding:0 8px}
 .article-card{background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border-bottom:4px solid var(--yellow);overflow:hidden;transition:transform 0.15s;display:flex;flex-direction:column}
 .article-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
 .article-thumb{width:100%;height: auto; aspect-ratio: 16 / 9;object-fit:cover}
