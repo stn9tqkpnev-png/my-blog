@@ -1,5 +1,5 @@
 ---
-title: "【SESAME 5】スマートウォッチ（Amazfit）で鍵を開ける方法。GASでサーバー代0円"
+title: "SESAME 5をスマートウォッチ（Amazfit）で解錠・施錠する方法｜GASでサーバー代0円"
 description: "Amazfit T-Rex 2などのスマートウォッチでSESAME 5を解錠・施錠する方法を解説。Google Apps Script (GAS) を使ってサーバー代をかけずに自作する手順を、実際の画面写真とコード付きで紹介します。"
 pubDate: "Oct 31 2026"
 tags: ["SESAME", "スマートウォッチ", "スマートホーム", "Amazfit"]
@@ -9,7 +9,7 @@ import AffiliateCard from "../../components/AffiliateCard.astro";
 import SupportMessage from "../../components/SupportMessage.astro";
 import RelatedArticle from "../../components/RelatedArticle.astro";
 
-**Amazfitの時計用アプリ「HTTP」とGoogle Apps Script（GAS）を組み合わせれば、サーバー代0円でスマートウォッチからSESAME 5を解錠・施錠できます。** 設定も一度行えばボタン一つで操作可能です。
+**Amazfitの時計用アプリ「HTTP」とGoogle Apps Script（GAS）を組み合わせれば、サーバー代0円でスマートウォッチからSESAME 5を解錠・施錠できます。** 設定は一度行えば、あとはボタン一つで操作できます。
 
 腕時計のボタンをタップするだけで、自宅の SESAME（セサミ） 5 を解錠・施錠する方法を紹介します。使うのは、Amazfit（アマズフィット） T-Rex 2 と、Amazfit の時計で動くミニアプリ「HTTP」です。
 
@@ -211,7 +211,7 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 
 6. 画面上部のディスクのアイコンで、保存します。
 
-スマホのブラウザからGASを直接操作すると、コードの修正がかなりやりにくいです。コードを書き換える場合は、スマホのテキストエディタなどで「自分のAPIキーやUUIDに書き換えたコード」を先に作っておくのがおすすめです。GASの画面では、最初から入っているサンプルコードをすべて削除し、用意しておいたコードを貼り付けるだけにしておくと、作業がスムーズに進みます。
+スマホのブラウザからGASを直接操作すると、コードの修正がかなりやりにくいです。コードを書き換える場合は、スマホのテキストエディタなどで「自分のAPIキーやUUIDに書き換えたコード」を先に作っておくと楽です。GASの画面では、最初から入っているサンプルコードをすべて削除し、用意しておいたコードを貼り付けるだけにしておくと、作業がスムーズに進みます。
 
 ### コードの説明
 
@@ -303,7 +303,7 @@ function aesCmac(key, message) { const subkeys = generateSubkeys(key); const K1 
 
 ## まとめ
 
-時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME 5 を腕時計から操作できました。使う前に、漏えいしたときの対応手順を決めておくことをおすすめします。
+時計のアプリから HTTP リクエストを送り、GAS で受け取ることで、サーバーなしで SESAME 5 を腕時計から操作できました。使う前に、漏えいしたときの対応手順を決めておくと安心です。
 
 <SupportMessage />
 
