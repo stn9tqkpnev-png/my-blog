@@ -1,0 +1,88 @@
+---
+title: 'Windyの風の地図が面白い｜台風になる前の渦から追える天気アプリ'
+description: '天気アプリ「Windy.com」の紹介です。欧州ECMWFなど各国の気象モデルの計算を地図で見る仕組み、風のアニメーション、台風になる前の渦を追う見方、無料版とPremiumの違いをまとめました。'
+pubDate: 'Nov 28 2026'
+heroImage: '../../assets/windy-hero.webp'
+tags: ['天気アプリ', 'アプリ']
+---
+
+import SupportMessage from "../../components/SupportMessage.astro";
+import RelatedArticle from "../../components/RelatedArticle.astro";
+
+**Windyは、世界各国の気象モデルが計算した天気を、地図の上でそのまま見るアプリです。見どころは風の流れで、台風になる前の小さな渦の段階から、発達していく様子を追えます。**
+
+## Windyは、予報を作るアプリではありません
+
+Windyを運営するのは、チェコのWindyty SEです。Windy自身は天気予報を作っていません。各国の気象機関が計算した結果を集めて、地図に表示するサービスです。
+
+使われている計算モデルは15種類以上あります。地図の初期設定は、欧州中期予報センターのECMWFです。アメリカのGFS、ドイツのICONなどに切り替えることもできます。
+
+日本の天気アプリの多くは、気象庁が発表した予報をもとにしています。Windyで見ているのは、その発表のもとになる計算そのものです。ここが、普通の天気アプリとの一番の違いです。
+
+## 風の流れが、アニメーションで見えます
+
+地図の上では、風の流れが粒子の動きで表示されます。風がどこからどこへ流れているのかを、目で追えます。
+
+![Windyの風のレイヤー。日本の周りの風の流れと等圧線](/images/windy-wind-japan.webp)
+
+表示は地表だけではありません。高度を切り替えると、上空13.5kmまでの風も見られます。画面の下の時間軸を動かすと、先の時刻の流れに進められます。
+
+モデルを切り替えると、同じ時刻でも流れの描かれ方が変わります。複数のモデルで似た流れになっていれば、それだけ確からしいという見方ができます。
+
+## 台風になる前の渦から追えます
+
+台風は、海の上で小さな渦が発達して生まれます。Windyでは、その渦の段階から、風と気圧の表示で追えます。気象庁が台風の発生を発表するより前の姿が見えるので、早めに気づけます。
+
+![広い範囲で見た風のレイヤー。低気圧の渦と、高気圧・低気圧の配置が見える](/images/windy-wind-wide.webp)
+
+ただし、見えているのは計算の結果で、確定した予報ではありません。計算は更新されるたびに変わります。先の時刻になるほど、モデルごとの違いも大きくなります。防災のための正式な情報は、気象庁の発表で確認してください。
+
+## 風以外にも、51の天気図があります
+
+表示できる情報は51種類あります。雨の量、雲、波の高さ、気温、気圧のほか、大気の状態を示すものや、雨雲レーダー、衛星画像もあります。
+
+![レイヤーの一覧。気象レーダー、衛星、風、雨、温度、波などが並ぶ](/images/windy-layers.webp)
+
+土台の地図を切り替えることもできます。アウトドア向けの地図では、地形の等高線まで表示されます。
+
+![アウトドア向けの地図。地形の等高線と詳しい地名が表示される](/images/windy-outdoor-map.webp)
+
+全部を使う必要はありません。風と雨と雲だけでも、普通の天気アプリとは違う見え方になります。
+
+<SupportMessage />
+
+## 無料版とPremiumの違い
+
+Windyは無料で使えて、広告もありません。無料版の予報は3時間刻みです。
+
+有料のPremiumにすると、予報が1時間刻みになり、15日先まで見られます。過去のレーダーや衛星画像をさかのぼって見ることもできます。料金は、Windyの公式サイトでは年額2,990円の自動更新プランがあります（2026年11月に確認）。アプリ内での料金は、購入する場所によって違うことがあります。
+
+風の流れを眺めるだけなら、無料版で足ります。先の予報を細かく見たい人が、Premiumを検討する形です。
+
+## 気をつけたいこと
+
+名前が似た「Windy.app」というアプリがあります。アイコンが青いほうは、別の会社の別アプリです。この記事で紹介しているのは、赤いアイコンのWindy.comで、開発元はWindyty SEです。
+
+もう1つ、今日と明日の降水確率だけを知りたい人には、Windyは情報が多すぎます。その用途なら、普通の天気アプリのほうが手早いです。
+
+## アプリはこちら
+
+<a href="https://play.google.com/store/apps/details?id=com.windyty.android" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:space-between; gap:8px; box-sizing:border-box; width:100%; max-width: 400px; margin:16px auto; padding:6px 8px; background:#fff; border:2px solid #1A2240; border-bottom-width:3px; border-radius:999px; text-decoration:none!important; color:#1A2240!important;">
+  <div style="flex:none; width:32px; height:32px; border-radius:9px; border:1px solid rgba(26,34,64,.15); background:#fff; overflow:hidden; margin:0; padding:0; box-sizing:border-box;">
+    <img src="/images/windy-icon.png" alt="Windy.com - 天気予報" style="display:block; width:100%; height:100%; margin:0; padding:0; max-width:none;" />
+  </div>
+  <div style="font-size:14px; font-weight:700; color:#1A2240; white-space:nowrap; margin:0!important; padding:0; box-sizing:border-box; line-height:1.25!important;">Windy.com - 天気予報</div>
+  <div style="flex:1; min-width:0; display:flex; align-items:center; gap:4px; font-size:12px; color:#4a516b; white-space:nowrap; margin:0!important; padding:0; box-sizing:border-box; line-height:1!important;">
+  <svg viewBox="0 0 24 24" aria-hidden="true" style="width:13px; height:13px; flex:none;"><path fill="#2196F3" d="M3.6 2.3 13.3 12 3.6 21.7c-.3-.2-.5-.6-.5-1.1V3.4c0-.5.2-.9.5-1.1z"/><path fill="#4CAF50" d="m3.6 2.3 12.6 6.8-2.9 2.9z"/><path fill="#FFC107" d="m16.2 9.1 4 2.2c.6.4.6 1 0 1.4l-4 2.2-2.9-2.9z"/><path fill="#F44336" d="m13.3 12 2.9 2.9L3.6 21.7z"/></svg>
+  <span style="display:block; line-height:1; padding-bottom:1px;">Google Play</span>
+</div>
+  <div style="flex:none; background: linear-gradient(to bottom, #FFD54F, #F5C542); box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1); color:#1A2240; font-size:13px; font-weight:700; padding:4px 14px!important; border:2px solid #1A2240; border-radius:999px; margin:0; box-sizing:border-box; line-height:1.25!important;">入手</div>
+</a>
+
+## まとめ
+
+Windyは、発表された予報を読むアプリではなく、計算された天気を地図で眺めるアプリでした。風の流れと台風の渦を見るだけでも、天気予報の見え方が変わります。
+
+## あわせて読みたい
+
+<RelatedArticle url="/blog/wispr-flow-gboard/" image="/images/wispr-flow-icon.png" title="Gboardの音声入力に限界を感じた私が「Wispr Flow」を併用している理由。誤変換・句読点のストレスから解放された話" />
