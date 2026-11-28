@@ -10,7 +10,7 @@ const allPosts = await getCollection("blog");
 const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const now = Date.now();
 const fmtDate = (d) => d.getFullYear() + "." + String(d.getMonth() + 1).padStart(2, "0") + "." + String(d.getDate()).padStart(2, "0");
-const items = posts.map((p) => ({ id: p.id, title: p.data.title, hero: p.data.heroImage, dateText: fmtDate(p.data.pubDate), isNew: now - p.data.pubDate.valueOf() < 691200000, cat: getCategoryOf(p.data.tags) }));
+const items = posts.map((p, i) => ({ id: p.id, title: p.data.title, hero: p.data.heroImage, dateText: fmtDate(p.data.pubDate), isNew: i < 3, cat: getCategoryOf(p.data.tags) }));
 const featured = items[0];
 const rest = items.slice(1);
 ---
